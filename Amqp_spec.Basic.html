@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Basic</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Basic</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Tx.html" title="Amqp_spec.Tx">Previous</a>
@@ -31,25 +33,81 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Basic.html">Amqp_spec.Basic</a></h1>
 
-<pre><span class="keyword">module</span> Basic: <code class="code">sig</code> <a href="Amqp_spec.Basic.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Basic: <code class="code">sig</code> <a href="Amqp_spec.Basic.html">..</a> <code class="code">end</code></pre><div class="info module top">
+The Basic class provides methods that support an industry-standard messaging model.<br>
+</div>
+<hr width="100%">
 
 <pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Content.html">Content</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Content.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Qos_ok.html">Qos_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Qos_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Qos.html">Qos</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Qos.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Consume_ok.html">Consume_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Consume_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Consume.html">Consume</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Consume.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Cancel_ok.html">Cancel_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Cancel_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Cancel.html">Cancel</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Cancel.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Publish.html">Publish</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Publish.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Return.html">Return</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Return.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Deliver.html">Deliver</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Deliver.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Get_ok.html">Get_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Get_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Get_empty.html">Get_empty</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Get_empty.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Get.html">Get</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Get.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Ack.html">Ack</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Ack.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Reject.html">Reject</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Reject.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Recover_async.html">Recover_async</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Recover_async.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Recover.html">Recover</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Recover.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Recover_ok.html">Recover_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Recover_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Nack.html">Nack</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Nack.html">..</a> <code class="code">end</code></pre>
-<pre><span id="VALmethod_to_string"><span class="keyword">val</span> method_to_string</span> : <code class="type">int -> string</code></pre></body></html>
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Qos_ok.html">Qos_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Qos_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method tells the client that the requested QoS levels could be handled by the server.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Qos.html">Qos</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Qos.html">..</a> <code class="code">end</code></pre><div class="info">
+This method requests a specific quality of service.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Consume_ok.html">Consume_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Consume_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+The server provides the client with a consumer tag, which is used by the client for methods called on the consumer at a later stage.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Consume.html">Consume</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Consume.html">..</a> <code class="code">end</code></pre><div class="info">
+This method asks the server to start a "consumer", which is a transient request for messages from a specific queue.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Cancel_ok.html">Cancel_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Cancel_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms that the cancellation was completed.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Cancel.html">Cancel</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Cancel.html">..</a> <code class="code">end</code></pre><div class="info">
+This method cancels a consumer.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Publish.html">Publish</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Publish.html">..</a> <code class="code">end</code></pre><div class="info">
+This method publishes a message to a specific exchange.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Return.html">Return</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Return.html">..</a> <code class="code">end</code></pre><div class="info">
+This method returns an undeliverable message that was published with the "immediate" flag set, or an unroutable message published with the "mandatory" flag set.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Deliver.html">Deliver</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Deliver.html">..</a> <code class="code">end</code></pre><div class="info">
+This method delivers a message to the client, via a consumer.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Get_ok.html">Get_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Get_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method delivers a message to the client following a get method.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Get_empty.html">Get_empty</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Get_empty.html">..</a> <code class="code">end</code></pre><div class="info">
+This method tells the client that the queue has no messages available for the client.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Get.html">Get</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Get.html">..</a> <code class="code">end</code></pre><div class="info">
+This method provides a direct access to the messages in a queue using a synchronous dialogue that is designed for specific types of application where synchronous functionality is more important than performance.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Ack.html">Ack</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Ack.html">..</a> <code class="code">end</code></pre><div class="info">
+When sent by the client, this method acknowledges one or more messages delivered via the Deliver or Get-Ok methods.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Reject.html">Reject</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Reject.html">..</a> <code class="code">end</code></pre><div class="info">
+This method allows a client to reject a message.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Recover_async.html">Recover_async</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Recover_async.html">..</a> <code class="code">end</code></pre><div class="info">
+This method asks the server to redeliver all unacknowledged messages on a specified channel.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Recover.html">Recover</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Recover.html">..</a> <code class="code">end</code></pre><div class="info">
+This method asks the server to redeliver all unacknowledged messages on a specified channel.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Recover_ok.html">Recover_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Recover_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method acknowledges a Basic.Recover method.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Nack.html">Nack</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Nack.html">..</a> <code class="code">end</code></pre><div class="info">
+This method allows a client to reject one or more incoming messages.
+</div>
+</body></html>

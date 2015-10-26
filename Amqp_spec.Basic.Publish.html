@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Basic.Publish</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Basic.Publish</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Basic.Cancel.html" title="Amqp_spec.Basic.Cancel">Previous</a>
@@ -31,42 +33,55 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Basic.Publish.html">Amqp_spec.Basic.Publish</a></h1>
 
-<pre><span class="keyword">module</span> Publish: <code class="code">sig</code> <a href="Amqp_spec.Basic.Publish.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Publish: <code class="code">sig</code> <a href="Amqp_spec.Basic.Publish.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method publishes a message to a specific exchange. The message will be routed to queues as defined by the exchange configuration and distributed to any active consumers when the transaction, if any, is committed.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(int -> string -> string -> bool -> bool -> 'a, 'a) <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.exchange">exchange</span>&nbsp;: <code class="type"><a href="Amqp_spec.html#TYPEexchange_name">Amqp_spec.exchange_name</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Specifies the name of the exchange to publish to. The exchange name can be empty, meaning the default exchange. If the exchange name is specified, and that exchange does not exist, the server will raise a channel exception.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.routing_key">routing_key</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Specifies the routing key for the message. The routing key is used for routing messages depending on the exchange configuration.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.mandatory">mandatory</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+This flag tells the server how to react if the message cannot be routed to a queue. If this flag is set, the server will return an unroutable message with a Return method. If this flag is zero, the server silently drops the message.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.immediate">immediate</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+This flag tells the server how to react if the message cannot be routed to a queue consumer immediately. If this flag is set, the server will return an undeliverable message with a Return method. If this flag is zero, the server will queue the message, but with no guarantee that it will ever be consumed.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 }
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Publish.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Publish.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">exchange:'a -><br>       routing_key:<a href="Amqp_spec.html#TYPEexchange_name">Amqp_spec.exchange_name</a> -><br>       mandatory:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       immediate:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       unit -> <a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -> <a href="Amqp_spec.Basic.Publish.html#TYPEt">t</a></code></pre>
-<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Basic.Publish.html#TYPEt">t</a> * <a href="Amqp_spec.Basic.Content.html#TYPEt">Amqp_spec.Basic.Content.t</a> * string -><br>       unit Async.Std.Deferred.t</code></pre></body></html>
+<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Basic.Publish.html#TYPEt">t</a> * <a href="Amqp_spec.Basic.Content.html#TYPEt">Amqp_spec.Basic.Content.t</a> * Core.Std.String.t -><br>       unit Async.Std.Deferred.t</code></pre></body></html>

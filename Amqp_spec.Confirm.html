@@ -16,12 +16,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Confirm</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Confirm</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="Amqp_spec.html" title="Amqp_spec">Up</a>
@@ -29,8 +31,16 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Confirm.html">Amqp_spec.Confirm</a></h1>
 
-<pre><span class="keyword">module</span> Confirm: <code class="code">sig</code> <a href="Amqp_spec.Confirm.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Confirm: <code class="code">sig</code> <a href="Amqp_spec.Confirm.html">..</a> <code class="code">end</code></pre><div class="info module top">
+The Confirm class allows publishers to put the channel in confirm mode and susequently be notified when messages have been handled by the broker. The intention is that all messages published on a channel in confirm mode will be acknowledged at some point. By acknowledging a message the broker assumes responsibility for it and indicates that it has done something it deems reasonable with it. Unroutable mandatory or immediate messages are acknowledged right after the Basic.Return method. Messages are acknowledged when all queues to which the message has been routed have either delivered the message and received an acknowledgement (if required), or enqueued the message (and persisted it if required). Published messages are assigned ascending sequence numbers, starting at 1 with the first Confirm.Select method. The server confirms messages by sending Basic.Ack methods referring to these sequence numbers.<br>
+</div>
+<hr width="100%">
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Confirm.Select_ok.html">Select_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Confirm.Select_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Confirm.Select.html">Select</a>: <code class="code">sig</code> <a href="Amqp_spec.Confirm.Select.html">..</a> <code class="code">end</code></pre>
-<pre><span id="VALmethod_to_string"><span class="keyword">val</span> method_to_string</span> : <code class="type">int -> string</code></pre></body></html>
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Confirm.Select_ok.html">Select_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Confirm.Select_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms to the client that the channel was successfully set to use publisher acknowledgements.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Confirm.Select.html">Select</a>: <code class="code">sig</code> <a href="Amqp_spec.Confirm.Select.html">..</a> <code class="code">end</code></pre><div class="info">
+This method sets the channel to use publisher acknowledgements.
+</div>
+</body></html>

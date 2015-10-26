@@ -16,12 +16,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
@@ -30,10 +32,14 @@
 <h1>Module <a href="type_Amqp.html">Amqp</a></h1>
 
 <pre><span class="keyword">module</span> Amqp: <code class="code">sig</code> <a href="Amqp.html">..</a> <code class="code">end</code></pre><div class="info module top">
-Convenience bindings.<br>
+Main module.
+<p>
+
+    This module contains convenient module aliases<br>
 </div>
 <hr width="100%">
 
+<pre><span class="keyword">module</span> <a href="Amqp.Message.html">Message</a>: <code class="type"><a href="Amqp_message.html">Amqp_message</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Amqp.Connection.html">Connection</a>: <code class="type"><a href="Amqp_connection.html">Amqp_connection</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Amqp.Queue.html">Queue</a>: <code class="type"><a href="Amqp_queue.html">Amqp_queue</a></code></pre>
 <pre><span class="keyword">module</span> <a href="Amqp.Channel.html">Channel</a>: <code class="type"><a href="Amqp_channel.html">Amqp_channel</a></code></pre>

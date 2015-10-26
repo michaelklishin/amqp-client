@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Connection.Tune_ok</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Connection.Tune_ok</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Connection.Secure.html" title="Amqp_spec.Connection.Secure">Previous</a>
@@ -31,34 +33,44 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Connection.Tune_ok.html">Amqp_spec.Connection.Tune_ok</a></h1>
 
-<pre><span class="keyword">module</span> Tune_ok: <code class="code">sig</code> <a href="Amqp_spec.Connection.Tune_ok.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Tune_ok: <code class="code">sig</code> <a href="Amqp_spec.Connection.Tune_ok.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method sends the client's connection tuning parameters to the server. Certain fields are negotiated, others provide capability information.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(int -> int -> int -> 'a, 'a) <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.channel_max">channel_max</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEshort">Amqp_types.short</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The maximum total number of channels that the client will use per connection.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.frame_max">frame_max</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPElong">Amqp_types.long</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The largest frame size that the client and server will use for the connection. Zero means that the client does not impose any specific limit but may reject very large frames if it cannot allocate resources for them. Note that the frame-max limit applies principally to content frames, where large contents can be broken into frames of arbitrary size.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.heartbeat">heartbeat</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEshort">Amqp_types.short</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The delay, in seconds, of the connection heartbeat that the client wants. Zero means the client does not want a heartbeat.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 }
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Tune_ok.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Tune_ok.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">channel_max:<a href="Amqp_types.html#TYPEshort">Amqp_types.short</a> -><br>       frame_max:<a href="Amqp_types.html#TYPElong">Amqp_types.long</a> -><br>       heartbeat:<a href="Amqp_types.html#TYPEshort">Amqp_types.short</a> -> unit -> <a href="Amqp_spec.Connection.Tune_ok.html#TYPEt">t</a></code></pre></body></html>

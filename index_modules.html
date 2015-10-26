@@ -13,12 +13,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Index of modules</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Index of modules</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
@@ -27,353 +29,475 @@
 <table>
 <tr><td align="left"><br>A</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Ack.html">Ack</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+When sent by the client, this method acknowledges one or more messages delivered via the Deliver or Get-Ok methods.
+</div>
+</td></tr>
 <tr><td><a href="Amqp.html">Amqp</a> </td>
 <td><div class="info">
-Convenience bindings.
+Main module.
 </div>
 </td></tr>
 <tr><td><a href="Amqp_channel.html">Amqp_channel</a> </td>
 <td><div class="info">
-Register handlers - For internal use
+Operations on channels
 </div>
 </td></tr>
 <tr><td><a href="Amqp_connection.html">Amqp_connection</a> </td>
-<td></td></tr>
+<td><div class="info">
+Connection
+</div>
+</td></tr>
 <tr><td><a href="Amqp_constants.html">Amqp_constants</a> </td>
-<td></td></tr>
+<td><div class="info">
+Internal - Low level protocol description
+</div>
+</td></tr>
 <tr><td><a href="Amqp_exchange.html">Amqp_exchange</a> </td>
 <td><div class="info">
-Predefined exchanges
+Operations on exchanges
 </div>
 </td></tr>
 <tr><td><a href="Amqp_framing.html">Amqp_framing</a> </td>
 <td><div class="info">
-read_frame reads a frame from the input, and sends the data to
-    the channel writer
+Internal
+</div>
+</td></tr>
+<tr><td><a href="Amqp_io.html">Amqp_io</a> </td>
+<td><div class="info">
+Internal
+</div>
+</td></tr>
+<tr><td><a href="Amqp_message.html">Amqp_message</a> </td>
+<td><div class="info">
+Amqp message type and functions
 </div>
 </td></tr>
 <tr><td><a href="Amqp_protocol.html">Amqp_protocol</a> </td>
-<td></td></tr>
+<td><div class="info">
+Internal
+</div>
+</td></tr>
+<tr><td><a href="Amqp_protocol_helpers.html">Amqp_protocol_helpers</a> </td>
+<td><div class="info">
+Internal
+</div>
+</td></tr>
 <tr><td><a href="Amqp_queue.html">Amqp_queue</a> </td>
 <td><div class="info">
-Declare a queue
+Operations on Queues
 </div>
 </td></tr>
 <tr><td><a href="Amqp_rpc.html">Amqp_rpc</a> </td>
 <td><div class="info">
-Initialize a client with the <code class="code">id</code> for tracing
+Rpc client and server patterns
 </div>
 </td></tr>
 <tr><td><a href="Amqp_spec.html">Amqp_spec</a> </td>
-<td></td></tr>
+<td><div class="info">
+Internal - Low level protocol description
+</div>
+</td></tr>
 <tr><td><a href="Amqp_types.html">Amqp_types</a> </td>
-<td></td></tr>
-<tr><td><a href="Amqp_util.html">Amqp_util</a> </td>
-<td></td></tr>
+<td><div class="info">
+Basic Amqp types
+</div>
+</td></tr>
 <tr><td align="left"><br>B</td></tr>
 <tr><td><a href="Amqp_spec.Basic.html">Basic</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The Basic class provides methods that support an industry-standard messaging model.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Exchange.Bind.html">Bind</a> [<a href="Amqp_spec.Exchange.html">Amqp_spec.Exchange</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method binds an exchange to an exchange.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Bind.html">Bind</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method binds a queue to an exchange.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Exchange.Bind_ok.html">Bind_ok</a> [<a href="Amqp_spec.Exchange.html">Amqp_spec.Exchange</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms that the bind was successful.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Bind_ok.html">Bind_ok</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms that the bind was successful.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Blocked.html">Blocked</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method indicates that a connection has been blocked and does not accept new publishes.
+</div>
+</td></tr>
 <tr><td align="left"><br>C</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Cancel.html">Cancel</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method cancels a consumer.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Cancel_ok.html">Cancel_ok</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms that the cancellation was completed.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Channel.html">Channel</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The channel class provides methods for a client to establish a channel to a server and for both peers to operate the channel thereafter.
+</div>
+</td></tr>
 <tr><td><a href="Amqp.Channel.html">Channel</a> [<a href="Amqp.html">Amqp</a>]</td>
 <td></td></tr>
+<tr><td><a href="Amqp_message.Channel.html">Channel</a> [<a href="Amqp_message.html">Amqp_message</a>]</td>
+<td></td></tr>
 <tr><td><a href="Amqp_rpc.Client.html">Client</a> [<a href="Amqp_rpc.html">Amqp_rpc</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Rpc Client pattern
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Close.html">Close</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method indicates that the sender wants to close the connection.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Channel.Close.html">Close</a> [<a href="Amqp_spec.Channel.html">Amqp_spec.Channel</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method indicates that the sender wants to close the channel.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Close_ok.html">Close_ok</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms a Connection.Close method and tells the recipient that it is safe to release resources for the connection and close the socket.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Channel.Close_ok.html">Close_ok</a> [<a href="Amqp_spec.Channel.html">Amqp_spec.Channel</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms a Channel.Close method and tells the recipient that it is safe to release resources for the channel.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Tx.Commit.html">Commit</a> [<a href="Amqp_spec.Tx.html">Amqp_spec.Tx</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method commits all message publications and acknowledgments performed in the current transaction.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Tx.Commit_ok.html">Commit_ok</a> [<a href="Amqp_spec.Tx.html">Amqp_spec.Tx</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms to the client that the commit succeeded.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Confirm.html">Confirm</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The Confirm class allows publishers to put the channel in confirm mode and susequently be notified when messages have been handled by the broker.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.html">Connection</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The connection class provides methods for a client to establish a network connection to a server, and for both peers to operate the connection thereafter.
+</div>
+</td></tr>
 <tr><td><a href="Amqp.Connection.html">Connection</a> [<a href="Amqp.html">Amqp</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_spec.Basic.Consume.html">Consume</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method asks the server to start a "consumer", which is a transient request for messages from a specific queue.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Consume_ok.html">Consume_ok</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_types.Content.html">Content</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The server provides the client with a consumer tag, which is used by the client for methods called on the consumer at a later stage.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Content.html">Content</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
+<td></td></tr>
+<tr><td><a href="Amqp_protocol.Content.html">Content</a> [<a href="Amqp_protocol.html">Amqp_protocol</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>D</td></tr>
 <tr><td><a href="Amqp_spec.Exchange.Declare.html">Declare</a> [<a href="Amqp_spec.Exchange.html">Amqp_spec.Exchange</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method creates an exchange if it does not already exist, and if the exchange exists, verifies that it is of the correct and expected class.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Declare.html">Declare</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method creates or checks a queue.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Exchange.Declare_ok.html">Declare_ok</a> [<a href="Amqp_spec.Exchange.html">Amqp_spec.Exchange</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms a Declare method and confirms the name of the exchange, essential for automatically-named exchanges.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Declare_ok.html">Declare_ok</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms a Declare method and confirms the name of the queue, essential for automatically-named queues.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Exchange.Delete.html">Delete</a> [<a href="Amqp_spec.Exchange.html">Amqp_spec.Exchange</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method deletes an exchange.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Delete.html">Delete</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method deletes a queue.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Exchange.Delete_ok.html">Delete_ok</a> [<a href="Amqp_spec.Exchange.html">Amqp_spec.Exchange</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms the deletion of an exchange.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Delete_ok.html">Delete_ok</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms the deletion of a queue.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Deliver.html">Deliver</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method delivers a message to the client, via a consumer.
+</div>
+</td></tr>
 <tr><td align="left"><br>E</td></tr>
 <tr><td><a href="Amqp_spec.Exchange.html">Exchange</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Exchanges match and distribute messages across queues.
+</div>
+</td></tr>
 <tr><td><a href="Amqp.Exchange.html">Exchange</a> [<a href="Amqp.html">Amqp</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>F</td></tr>
 <tr><td><a href="Amqp_spec.Channel.Flow.html">Flow</a> [<a href="Amqp_spec.Channel.html">Amqp_spec.Channel</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method asks the peer to pause or restart the flow of content data sent by a consumer.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Channel.Flow_ok.html">Flow_ok</a> [<a href="Amqp_spec.Channel.html">Amqp_spec.Channel</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Confirms to the peer that a flow command was received and processed.
+</div>
+</td></tr>
 <tr><td align="left"><br>G</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Get.html">Get</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method provides a direct access to the messages in a queue using a synchronous dialogue that is designed for specific types of application where synchronous functionality is more important than performance.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Get_empty.html">Get_empty</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method tells the client that the queue has no messages available for the client.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Get_ok.html">Get_ok</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method delivers a message to the client following a get method.
+</div>
+</td></tr>
 <tr><td align="left"><br>I</td></tr>
-<tr><td><a href="Amqp_spec.Connection.Unblocked.I.html">I</a> [<a href="Amqp_spec.Connection.Unblocked.html">Amqp_spec.Connection.Unblocked</a>]</td>
+<tr><td><a href="Amqp_io.Input.html">Input</a> [<a href="Amqp_io.html">Amqp_io</a>]</td>
 <td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Blocked.I.html">I</a> [<a href="Amqp_spec.Connection.Blocked.html">Amqp_spec.Connection.Blocked</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Close.I.html">I</a> [<a href="Amqp_spec.Connection.Close.html">Amqp_spec.Connection.Close</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Close_ok.I.html">I</a> [<a href="Amqp_spec.Connection.Close_ok.html">Amqp_spec.Connection.Close_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Open.I.html">I</a> [<a href="Amqp_spec.Connection.Open.html">Amqp_spec.Connection.Open</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Open_ok.I.html">I</a> [<a href="Amqp_spec.Connection.Open_ok.html">Amqp_spec.Connection.Open_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Tune.I.html">I</a> [<a href="Amqp_spec.Connection.Tune.html">Amqp_spec.Connection.Tune</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Tune_ok.I.html">I</a> [<a href="Amqp_spec.Connection.Tune_ok.html">Amqp_spec.Connection.Tune_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Secure.I.html">I</a> [<a href="Amqp_spec.Connection.Secure.html">Amqp_spec.Connection.Secure</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Secure_ok.I.html">I</a> [<a href="Amqp_spec.Connection.Secure_ok.html">Amqp_spec.Connection.Secure_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Start.I.html">I</a> [<a href="Amqp_spec.Connection.Start.html">Amqp_spec.Connection.Start</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Connection.Start_ok.I.html">I</a> [<a href="Amqp_spec.Connection.Start_ok.html">Amqp_spec.Connection.Start_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Channel.Close.I.html">I</a> [<a href="Amqp_spec.Channel.Close.html">Amqp_spec.Channel.Close</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Channel.Close_ok.I.html">I</a> [<a href="Amqp_spec.Channel.Close_ok.html">Amqp_spec.Channel.Close_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Channel.Flow.I.html">I</a> [<a href="Amqp_spec.Channel.Flow.html">Amqp_spec.Channel.Flow</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Channel.Flow_ok.I.html">I</a> [<a href="Amqp_spec.Channel.Flow_ok.html">Amqp_spec.Channel.Flow_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Channel.Open.I.html">I</a> [<a href="Amqp_spec.Channel.Open.html">Amqp_spec.Channel.Open</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Channel.Open_ok.I.html">I</a> [<a href="Amqp_spec.Channel.Open_ok.html">Amqp_spec.Channel.Open_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Exchange.Unbind.I.html">I</a> [<a href="Amqp_spec.Exchange.Unbind.html">Amqp_spec.Exchange.Unbind</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Exchange.Unbind_ok.I.html">I</a> [<a href="Amqp_spec.Exchange.Unbind_ok.html">Amqp_spec.Exchange.Unbind_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Exchange.Bind.I.html">I</a> [<a href="Amqp_spec.Exchange.Bind.html">Amqp_spec.Exchange.Bind</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Exchange.Bind_ok.I.html">I</a> [<a href="Amqp_spec.Exchange.Bind_ok.html">Amqp_spec.Exchange.Bind_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Exchange.Delete.I.html">I</a> [<a href="Amqp_spec.Exchange.Delete.html">Amqp_spec.Exchange.Delete</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Exchange.Delete_ok.I.html">I</a> [<a href="Amqp_spec.Exchange.Delete_ok.html">Amqp_spec.Exchange.Delete_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Exchange.Declare.I.html">I</a> [<a href="Amqp_spec.Exchange.Declare.html">Amqp_spec.Exchange.Declare</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Exchange.Declare_ok.I.html">I</a> [<a href="Amqp_spec.Exchange.Declare_ok.html">Amqp_spec.Exchange.Declare_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Delete.I.html">I</a> [<a href="Amqp_spec.Queue.Delete.html">Amqp_spec.Queue.Delete</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Delete_ok.I.html">I</a> [<a href="Amqp_spec.Queue.Delete_ok.html">Amqp_spec.Queue.Delete_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Purge.I.html">I</a> [<a href="Amqp_spec.Queue.Purge.html">Amqp_spec.Queue.Purge</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Purge_ok.I.html">I</a> [<a href="Amqp_spec.Queue.Purge_ok.html">Amqp_spec.Queue.Purge_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Unbind.I.html">I</a> [<a href="Amqp_spec.Queue.Unbind.html">Amqp_spec.Queue.Unbind</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Unbind_ok.I.html">I</a> [<a href="Amqp_spec.Queue.Unbind_ok.html">Amqp_spec.Queue.Unbind_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Bind.I.html">I</a> [<a href="Amqp_spec.Queue.Bind.html">Amqp_spec.Queue.Bind</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Bind_ok.I.html">I</a> [<a href="Amqp_spec.Queue.Bind_ok.html">Amqp_spec.Queue.Bind_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Declare.I.html">I</a> [<a href="Amqp_spec.Queue.Declare.html">Amqp_spec.Queue.Declare</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Queue.Declare_ok.I.html">I</a> [<a href="Amqp_spec.Queue.Declare_ok.html">Amqp_spec.Queue.Declare_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Nack.I.html">I</a> [<a href="Amqp_spec.Basic.Nack.html">Amqp_spec.Basic.Nack</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Recover_ok.I.html">I</a> [<a href="Amqp_spec.Basic.Recover_ok.html">Amqp_spec.Basic.Recover_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Recover.I.html">I</a> [<a href="Amqp_spec.Basic.Recover.html">Amqp_spec.Basic.Recover</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Recover_async.I.html">I</a> [<a href="Amqp_spec.Basic.Recover_async.html">Amqp_spec.Basic.Recover_async</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Reject.I.html">I</a> [<a href="Amqp_spec.Basic.Reject.html">Amqp_spec.Basic.Reject</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Ack.I.html">I</a> [<a href="Amqp_spec.Basic.Ack.html">Amqp_spec.Basic.Ack</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Get.I.html">I</a> [<a href="Amqp_spec.Basic.Get.html">Amqp_spec.Basic.Get</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Get_empty.I.html">I</a> [<a href="Amqp_spec.Basic.Get_empty.html">Amqp_spec.Basic.Get_empty</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Get_ok.I.html">I</a> [<a href="Amqp_spec.Basic.Get_ok.html">Amqp_spec.Basic.Get_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Deliver.I.html">I</a> [<a href="Amqp_spec.Basic.Deliver.html">Amqp_spec.Basic.Deliver</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Return.I.html">I</a> [<a href="Amqp_spec.Basic.Return.html">Amqp_spec.Basic.Return</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Publish.I.html">I</a> [<a href="Amqp_spec.Basic.Publish.html">Amqp_spec.Basic.Publish</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Cancel.I.html">I</a> [<a href="Amqp_spec.Basic.Cancel.html">Amqp_spec.Basic.Cancel</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Cancel_ok.I.html">I</a> [<a href="Amqp_spec.Basic.Cancel_ok.html">Amqp_spec.Basic.Cancel_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Consume.I.html">I</a> [<a href="Amqp_spec.Basic.Consume.html">Amqp_spec.Basic.Consume</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Consume_ok.I.html">I</a> [<a href="Amqp_spec.Basic.Consume_ok.html">Amqp_spec.Basic.Consume_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Qos.I.html">I</a> [<a href="Amqp_spec.Basic.Qos.html">Amqp_spec.Basic.Qos</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Qos_ok.I.html">I</a> [<a href="Amqp_spec.Basic.Qos_ok.html">Amqp_spec.Basic.Qos_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Basic.Content.I.html">I</a> [<a href="Amqp_spec.Basic.Content.html">Amqp_spec.Basic.Content</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Tx.Rollback.I.html">I</a> [<a href="Amqp_spec.Tx.Rollback.html">Amqp_spec.Tx.Rollback</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Tx.Rollback_ok.I.html">I</a> [<a href="Amqp_spec.Tx.Rollback_ok.html">Amqp_spec.Tx.Rollback_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Tx.Commit.I.html">I</a> [<a href="Amqp_spec.Tx.Commit.html">Amqp_spec.Tx.Commit</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Tx.Commit_ok.I.html">I</a> [<a href="Amqp_spec.Tx.Commit_ok.html">Amqp_spec.Tx.Commit_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Tx.Select.I.html">I</a> [<a href="Amqp_spec.Tx.Select.html">Amqp_spec.Tx.Select</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Tx.Select_ok.I.html">I</a> [<a href="Amqp_spec.Tx.Select_ok.html">Amqp_spec.Tx.Select_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Confirm.Select.I.html">I</a> [<a href="Amqp_spec.Confirm.Select.html">Amqp_spec.Confirm.Select</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_spec.Confirm.Select_ok.I.html">I</a> [<a href="Amqp_spec.Confirm.Select_ok.html">Amqp_spec.Confirm.Select_ok</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_protocol.Input.html">Input</a> [<a href="Amqp_protocol.html">Amqp_protocol</a>]</td>
+<tr><td align="left"><br>M</td></tr>
+<tr><td><a href="Amqp.Message.html">Message</a> [<a href="Amqp.html">Amqp</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>N</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Nack.html">Nack</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method allows a client to reject one or more incoming messages.
+</div>
+</td></tr>
 <tr><td align="left"><br>O</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Open.html">Open</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method opens a connection to a virtual host, which is a collection of resources, and acts to separate multiple application domains within a server.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Channel.Open.html">Open</a> [<a href="Amqp_spec.Channel.html">Amqp_spec.Channel</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method opens a channel to the server.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Open_ok.html">Open_ok</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method signals to the client that the connection is ready for use.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Channel.Open_ok.html">Open_ok</a> [<a href="Amqp_spec.Channel.html">Amqp_spec.Channel</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_protocol.Output.html">Output</a> [<a href="Amqp_protocol.html">Amqp_protocol</a>]</td>
+<td><div class="info">
+This method signals to the client that the channel is ready for use.
+</div>
+</td></tr>
+<tr><td><a href="Amqp_io.Output.html">Output</a> [<a href="Amqp_io.html">Amqp_io</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>P</td></tr>
-<tr><td><a href="Amqp_spec.Printer.html">Printer</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
 <tr><td><a href="Amqp_spec.Basic.Publish.html">Publish</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method publishes a message to a specific exchange.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Purge.html">Purge</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method removes all messages from a queue which are not awaiting acknowledgment.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Purge_ok.html">Purge_ok</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms the purge of a queue.
+</div>
+</td></tr>
 <tr><td align="left"><br>Q</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Qos.html">Qos</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method requests a specific quality of service.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Qos_ok.html">Qos_ok</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method tells the client that the requested QoS levels could be handled by the server.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.html">Queue</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Queues store and forward messages.
+</div>
+</td></tr>
 <tr><td><a href="Amqp.Queue.html">Queue</a> [<a href="Amqp.html">Amqp</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>R</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Recover.html">Recover</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method asks the server to redeliver all unacknowledged messages on a specified channel.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Recover_async.html">Recover_async</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method asks the server to redeliver all unacknowledged messages on a specified channel.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Recover_ok.html">Recover_ok</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method acknowledges a Basic.Recover method.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Reject.html">Reject</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method allows a client to reject a message.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Basic.Return.html">Return</a> [<a href="Amqp_spec.Basic.html">Amqp_spec.Basic</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method returns an undeliverable message that was published with the "immediate" flag set, or an unroutable message published with the "mandatory" flag set.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Tx.Rollback.html">Rollback</a> [<a href="Amqp_spec.Tx.html">Amqp_spec.Tx</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method abandons all message publications and acknowledgments performed in the current transaction.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Tx.Rollback_ok.html">Rollback_ok</a> [<a href="Amqp_spec.Tx.html">Amqp_spec.Tx</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms to the client that the rollback succeeded.
+</div>
+</td></tr>
 <tr><td><a href="Amqp.Rpc.html">Rpc</a> [<a href="Amqp.html">Amqp</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>S</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Secure.html">Secure</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The SASL protocol works by exchanging challenges and responses until both peers have received sufficient information to authenticate each other.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Secure_ok.html">Secure_ok</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method attempts to authenticate, passing a block of SASL data for the security mechanism at the server side.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Tx.Select.html">Select</a> [<a href="Amqp_spec.Tx.html">Amqp_spec.Tx</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method sets the channel to use standard transactions.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Confirm.Select.html">Select</a> [<a href="Amqp_spec.Confirm.html">Amqp_spec.Confirm</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method sets the channel to use publisher acknowledgements.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Tx.Select_ok.html">Select_ok</a> [<a href="Amqp_spec.Tx.html">Amqp_spec.Tx</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms to the client that the channel was successfully set to use standard transactions.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Confirm.Select_ok.html">Select_ok</a> [<a href="Amqp_spec.Confirm.html">Amqp_spec.Confirm</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms to the client that the channel was successfully set to use publisher acknowledgements.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_rpc.Server.html">Server</a> [<a href="Amqp_rpc.html">Amqp_rpc</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_types.Spec.html">Spec</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
+<td><div class="info">
+Rpc Server pattern
+</div>
+</td></tr>
+<tr><td><a href="Amqp_protocol.Spec.html">Spec</a> [<a href="Amqp_protocol.html">Amqp_protocol</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_spec.Connection.Start.html">Start</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method starts the connection negotiation process by telling the client the protocol version that the server proposes, along with a list of security mechanisms which the client can use for authentication.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Start_ok.html">Start_ok</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method selects a SASL security mechanism.
+</div>
+</td></tr>
 <tr><td align="left"><br>T</td></tr>
+<tr><td><a href="Amqp_channel.Transaction.html">Transaction</a> [<a href="Amqp_channel.html">Amqp_channel</a>]</td>
+<td><div class="info">
+Transactions.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Tune.html">Tune</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method proposes a set of connection configuration values to the client.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Tune_ok.html">Tune_ok</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method sends the client's connection tuning parameters to the server.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Tx.html">Tx</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The Tx class allows publish and ack operations to be batched into atomic units of work.
+</div>
+</td></tr>
 <tr><td align="left"><br>U</td></tr>
 <tr><td><a href="Amqp_spec.Exchange.Unbind.html">Unbind</a> [<a href="Amqp_spec.Exchange.html">Amqp_spec.Exchange</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method unbinds an exchange from an exchange.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Unbind.html">Unbind</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method unbinds a queue from an exchange.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Exchange.Unbind_ok.html">Unbind_ok</a> [<a href="Amqp_spec.Exchange.html">Amqp_spec.Exchange</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms that the unbind was successful.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Queue.Unbind_ok.html">Unbind_ok</a> [<a href="Amqp_spec.Queue.html">Amqp_spec.Queue</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method confirms that the unbind was successful.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Unblocked.html">Unblocked</a> [<a href="Amqp_spec.Connection.html">Amqp_spec.Connection</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This method indicates that a connection has been unblocked and now accepts publishes.
+</div>
+</td></tr>
 </table>
 </body>
 </html>

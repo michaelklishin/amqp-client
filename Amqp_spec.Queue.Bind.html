@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Queue.Bind</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Queue.Bind</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Queue.Bind_ok.html" title="Amqp_spec.Queue.Bind_ok">Previous</a>
@@ -31,16 +33,21 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Queue.Bind.html">Amqp_spec.Queue.Bind</a></h1>
 
-<pre><span class="keyword">module</span> Bind: <code class="code">sig</code> <a href="Amqp_spec.Queue.Bind.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Bind: <code class="code">sig</code> <a href="Amqp_spec.Queue.Bind.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method binds a queue to an exchange. Until a queue is bound it will not receive any messages. In a classic messaging model, store-and-forward queues are bound to a direct exchange and subscription queues are bound to a topic exchange.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(int -> string -> string -> string -> bool -> <a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -> 'a, 'a)<br>       <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.queue">queue</span>&nbsp;: <code class="type"><a href="Amqp_spec.html#TYPEqueue_name">Amqp_spec.queue_name</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Specifies the name of the queue to bind.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
@@ -54,7 +61,10 @@
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.routing_key">routing_key</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Specifies the routing key for the binding. The routing key is used for routing messages depending on the exchange configuration. Not all exchanges use a routing key - refer to the specific exchange documentation. If the queue name is empty, the server uses the last queue declared on the channel. If the routing key is also empty, the server uses this queue name for the routing key as well. If the queue name is provided but the routing key is empty, the server does the binding with that empty routing key. The meaning of empty routing keys depends on the exchange implementation.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
@@ -68,12 +78,14 @@
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.arguments">arguments</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEtable">Amqp_types.table</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+A set of arguments for the binding. The syntax and semantics of these arguments depends on the exchange class.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 }
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Queue.Bind.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Queue.Bind.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">queue:'a -><br>       exchange:<a href="Amqp_spec.html#TYPEqueue_name">Amqp_spec.queue_name</a> -><br>       routing_key:<a href="Amqp_spec.html#TYPEexchange_name">Amqp_spec.exchange_name</a> -><br>       no_wait:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       arguments:<a href="Amqp_spec.html#TYPEno_wait">Amqp_spec.no_wait</a> -><br>       unit -> <a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -> <a href="Amqp_spec.Queue.Bind.html#TYPEt">t</a></code></pre>
-<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type">?post_handler:(unit -> unit) -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Queue.Bind.html#TYPEt">t</a> -> unit Async_kernel.Deferred0.t</code></pre></body></html>
+<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Queue.Bind.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre></body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Amqp_io.html">
+<link rel="next" href="Amqp_protocol.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Amqp" rel="Chapter" href="Amqp.html">
+<link title="Amqp_channel" rel="Chapter" href="Amqp_channel.html">
+<link title="Amqp_connection" rel="Chapter" href="Amqp_connection.html">
+<link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
+<link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
+<link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
+<link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
+<link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
+<link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
+<link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_message</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Amqp_io.html" title="Amqp_io">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Amqp_protocol.html" title="Amqp_protocol">Next</a>
+</div>
+<h1>Module <a href="type_Amqp_message.html">Amqp_message</a></h1>
+
+<pre><span class="keyword">module</span> Amqp_message: <code class="code">sig</code> <a href="Amqp_message.html">..</a> <code class="code">end</code></pre><div class="info module top">
+Amqp message type and functions<br>
+</div>
+<hr width="100%">
+
+<pre><span class="keyword">module</span> <a href="Amqp_message.Channel.html">Channel</a>: <code class="type"><a href="Amqp_channel.html">Amqp_channel</a></code></pre>
+<pre><span id="TYPEmessage"><span class="keyword">type</span> <code class="type"></code>message</span> = <code class="type"><a href="Amqp_spec.Basic.Content.html#TYPEt">Amqp_spec.Basic.Content.t</a> * string</code> </pre>
+
+
+<pre><span id="VALstring_header"><span class="keyword">val</span> string_header</span> : <code class="type">string -> string -> <a href="Amqp_types.html#TYPEheader">Amqp_types.header</a></code></pre>
+<pre><span id="VALint_header"><span class="keyword">val</span> int_header</span> : <code class="type">string -> int -> <a href="Amqp_types.html#TYPEheader">Amqp_types.header</a></code></pre>
+<pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.delivery_tag">delivery_tag</span>&nbsp;: <code class="type">int</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.redelivered">redelivered</span>&nbsp;: <code class="type">bool</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.exchange">exchange</span>&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.routing_key">routing_key</span>&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTt.message">message</span>&nbsp;: <code class="type"><a href="Amqp_message.html#TYPEmessage">message</a></code>;</code></td>
+
+</tr></table>
+}
+
+
+
+<pre><span id="VALmake"><span class="keyword">val</span> make</span> : <code class="type">?content_type:string -><br>       ?content_encoding:string -><br>       ?headers:<a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -><br>       ?delivery_mode:int -><br>       ?priority:int -><br>       ?correlation_id:string -><br>       ?reply_to:string -><br>       ?expiration:int -><br>       ?message_id:string -><br>       ?timestamp:int -><br>       ?amqp_type:string -><br>       ?user_id:string -> ?app_id:string -> string -> <a href="Amqp_message.html#TYPEmessage">message</a></code></pre>
+<pre><span id="VALack"><span class="keyword">val</span> ack</span> : <code class="type">'a Channel.t -> <a href="Amqp_message.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+Acknowledge a message.
+    Messages <em>must</em> be acknowledged on the same channel as they are received<br>
+</div>
+
+<pre><span id="VALreject"><span class="keyword">val</span> reject</span> : <code class="type">requeue:bool -> 'a Channel.t -> <a href="Amqp_message.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+Reject (Nack) a message.
+    Messages <em>must</em> be rejected on the same channel as they are received<br>
+</div>
+<div class="param_info"><code class="code">requeue</code> : If true, the message will be requeued (default)</div>
+
+<pre><span id="VALrecover"><span class="keyword">val</span> recover</span> : <code class="type">requeue:bool -> 'a Channel.t -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+Ask the server to resend or discard all outstanding messages on the channel
+    This is essentially the same as calling nack on all outstanding messages.<br>
+</div>
+<div class="param_info"><code class="code">requeue</code> : if true messages are redelivered</div>
+</body></html>

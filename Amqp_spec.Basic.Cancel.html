@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Basic.Cancel</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Basic.Cancel</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Basic.Cancel_ok.html" title="Amqp_spec.Basic.Cancel_ok">Previous</a>
@@ -31,9 +33,11 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Basic.Cancel.html">Amqp_spec.Basic.Cancel</a></h1>
 
-<pre><span class="keyword">module</span> Cancel: <code class="code">sig</code> <a href="Amqp_spec.Basic.Cancel.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Cancel: <code class="code">sig</code> <a href="Amqp_spec.Basic.Cancel.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method cancels a consumer. This does not affect already delivered messages, but it does mean the server will not send any more messages for that consumer. The client may receive an arbitrary number of messages in between sending the cancel method and receiving the cancel-ok reply. It may also be sent from the server to the client in the event of the consumer being unexpectedly cancelled (i.e. cancelled for any reason other than the server receiving the corresponding basic.cancel from the client). This allows clients to be notified of the loss of consumers due to events such as queue deletion. Note that as it is not a MUST for clients to accept this method from the server, it is advisable for the broker to be able to identify those clients that are capable of accepting the method, through some means of capability negotiation.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(string -> bool -> 'a, 'a) <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -53,7 +57,6 @@
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Cancel.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Cancel.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">consumer_tag:<a href="Amqp_spec.html#TYPEconsumer_tag">Amqp_spec.consumer_tag</a> -><br>       no_wait:<a href="Amqp_spec.html#TYPEno_wait">Amqp_spec.no_wait</a> -> unit -> <a href="Amqp_spec.Basic.Cancel.html#TYPEt">t</a></code></pre>
-<pre><span id="VALreply"><span class="keyword">val</span> reply</span> : <code class="type">?post_handler:(<a href="Amqp_spec.Basic.Cancel.html#TYPEt">t</a> -> unit) -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       (<a href="Amqp_spec.Basic.Cancel.html#TYPEt">t</a> -> <a href="Amqp_spec.Basic.Cancel_ok.html#TYPEt">Amqp_spec.Basic.Cancel_ok.t</a> Async.Std.Deferred.t) -><br>       unit Async.Std.Deferred.t</code></pre>
-<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type">?post_handler:(<a href="Amqp_spec.Basic.Cancel_ok.html#TYPEt">Amqp_spec.Basic.Cancel_ok.t</a> -> unit) -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Basic.Cancel.html#TYPEt">t</a> -><br>       <a href="Amqp_spec.Basic.Cancel_ok.html#TYPEt">Amqp_spec.Basic.Cancel_ok.t</a> Async_kernel.Deferred0.t</code></pre></body></html>
+<pre><span id="VALreply"><span class="keyword">val</span> reply</span> : <code class="type">?once:bool -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       (<a href="Amqp_spec.Basic.Cancel.html#TYPEt">t</a> -> <a href="Amqp_spec.Basic.Cancel_ok.html#TYPEt">Amqp_spec.Basic.Cancel_ok.t</a> Async.Std.Deferred.t) -><br>       unit Async.Std.Deferred.t</code></pre>
+<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Basic.Cancel.html#TYPEt">t</a> -> <a href="Amqp_spec.Basic.Cancel_ok.html#TYPEt">Amqp_spec.Basic.Cancel_ok.t</a> Async.Std.Deferred.t</code></pre></body></html>

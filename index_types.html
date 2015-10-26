@@ -13,12 +13,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Index of types</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Index of types</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
@@ -38,14 +40,15 @@
 <td></td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEclass_id">class_id</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
 <td></td></tr>
-<tr><td><a href="Amqp_channel.html#TYPEclose_handler">close_handler</a> [<a href="Amqp_channel.html">Amqp_channel</a>]</td>
+<tr><td><a href="Amqp_channel.html#TYPEconfirms">confirms</a> [<a href="Amqp_channel.html">Amqp_channel</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_queue.html#TYPEconsumer">consumer</a> [<a href="Amqp_queue.html">Amqp_queue</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEconsumer_tag">consumer_tag</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_channel.html#TYPEconsumers">consumers</a> [<a href="Amqp_channel.html">Amqp_channel</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Identifier for the consumer, valid within the current channel.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_framing.html#TYPEcontent_handler">content_handler</a> [<a href="Amqp_framing.html">Amqp_framing</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>D</td></tr>
@@ -54,13 +57,22 @@
 <tr><td><a href="Amqp_types.html#TYPEdecimal">decimal</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEdelivery_tag">delivery_tag</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The server-assigned and channel-specific delivery tag
+</div>
+</td></tr>
 <tr><td align="left"><br>E</td></tr>
-<tr><td><a href="Amqp_types.html#TYPEelem">elem</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
+<tr><td><a href="Amqp_protocol.html#TYPEelem">elem</a> [<a href="Amqp_protocol.html">Amqp_protocol</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEexchange_name">exchange_name</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The exchange name is a client-selected string that identifies the exchange for publish methods.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_exchange.html#TYPEexchange_type">exchange_type</a> [<a href="Amqp_exchange.html">Amqp_exchange</a>]</td>
+<td></td></tr>
+<tr><td align="left"><br>H</td></tr>
+<tr><td><a href="Amqp_types.html#TYPEheader">header</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>L</td></tr>
 <tr><td><a href="Amqp_types.html#TYPElong">long</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
@@ -72,10 +84,13 @@
 <tr><td align="left"><br>M</td></tr>
 <tr><td><a href="Amqp_framing.html#TYPEmessage">message</a> [<a href="Amqp_framing.html">Amqp_framing</a>]</td>
 <td></td></tr>
-<tr><td><a href="Amqp_channel.html#TYPEmessage">message</a> [<a href="Amqp_channel.html">Amqp_channel</a>]</td>
+<tr><td><a href="Amqp_message.html#TYPEmessage">message</a> [<a href="Amqp_message.html">Amqp_message</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEmessage_count">message_count</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The number of messages in the queue, which will be zero for newly-declared queues.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_types.html#TYPEmessage_id">message_id</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_framing.html#TYPEmethod_handler">method_handler</a> [<a href="Amqp_framing.html">Amqp_framing</a>]</td>
@@ -86,39 +101,68 @@
 <td></td></tr>
 <tr><td align="left"><br>N</td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEno_ack">no_ack</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
+<td><div class="info">
+If this field is set the server does not expect acknowledgements for messages.
+</div>
+</td></tr>
+<tr><td><a href="Amqp_channel.html#TYPEno_confirm">no_confirm</a> [<a href="Amqp_channel.html">Amqp_channel</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEno_local">no_local</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+If the no-local field is set the server will not send messages to the connection that published them.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEno_wait">no_wait</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+If set, the server will not respond to the method.
+</div>
+</td></tr>
 <tr><td align="left"><br>O</td></tr>
 <tr><td><a href="Amqp_types.html#TYPEoctet">octet</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>P</td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEpath">path</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+Unconstrained.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEpeer_properties">peer_properties</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
-<tr><td><a href="Amqp_util.html#TYPEpost_handler">post_handler</a> [<a href="Amqp_util.html">Amqp_util</a>]</td>
+<td><div class="info">
+This table provides a set of peer properties, used for identification, debugging, and general information.
+</div>
+</td></tr>
+<tr><td><a href="Amqp_protocol_helpers.html#TYPEpost_handler">post_handler</a> [<a href="Amqp_protocol_helpers.html">Amqp_protocol_helpers</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>Q</td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEqueue_name">queue_name</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The queue name identifies the queue within the vhost.
+</div>
+</td></tr>
 <tr><td align="left"><br>R</td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEredelivered">redelivered</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+This indicates that the message has been previously delivered to this or another client.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEreply_code">reply_code</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The reply code.
+</div>
+</td></tr>
 <tr><td><a href="Amqp_spec.html#TYPEreply_text">reply_text</a> [<a href="Amqp_spec.html">Amqp_spec</a>]</td>
-<td></td></tr>
+<td><div class="info">
+The localised reply text.
+</div>
+</td></tr>
 <tr><td align="left"><br>S</td></tr>
 <tr><td><a href="Amqp_types.html#TYPEshort">short</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_types.html#TYPEshortstr">shortstr</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
 <td></td></tr>
-<tr><td><a href="Amqp_types.Content.html#TYPEspec">spec</a> [<a href="Amqp_types.Content.html">Amqp_types.Content</a>]</td>
+<tr><td><a href="Amqp_protocol.Content.html#TYPEspec">spec</a> [<a href="Amqp_protocol.Content.html">Amqp_protocol.Content</a>]</td>
 <td></td></tr>
-<tr><td><a href="Amqp_types.Spec.html#TYPEspec">spec</a> [<a href="Amqp_types.Spec.html">Amqp_types.Spec</a>]</td>
+<tr><td><a href="Amqp_protocol.Spec.html#TYPEspec">spec</a> [<a href="Amqp_protocol.Spec.html">Amqp_protocol.Spec</a>]</td>
 <td></td></tr>
 <tr><td align="left"><br>T</td></tr>
 <tr><td><a href="Amqp_spec.Connection.Unblocked.html#TYPEt">t</a> [<a href="Amqp_spec.Connection.Unblocked.html">Amqp_spec.Connection.Unblocked</a>]</td>
@@ -247,9 +291,9 @@
 <td></td></tr>
 <tr><td><a href="Amqp_spec.Confirm.Select_ok.html#TYPEt">t</a> [<a href="Amqp_spec.Confirm.Select_ok.html">Amqp_spec.Confirm.Select_ok</a>]</td>
 <td></td></tr>
-<tr><td><a href="Amqp_protocol.Output.html#TYPEt">t</a> [<a href="Amqp_protocol.Output.html">Amqp_protocol.Output</a>]</td>
+<tr><td><a href="Amqp_io.Output.html#TYPEt">t</a> [<a href="Amqp_io.Output.html">Amqp_io.Output</a>]</td>
 <td></td></tr>
-<tr><td><a href="Amqp_protocol.Input.html#TYPEt">t</a> [<a href="Amqp_protocol.Input.html">Amqp_protocol.Input</a>]</td>
+<tr><td><a href="Amqp_io.Input.html#TYPEt">t</a> [<a href="Amqp_io.Input.html">Amqp_io.Input</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_framing.html#TYPEt">t</a> [<a href="Amqp_framing.html">Amqp_framing</a>]</td>
 <td></td></tr>
@@ -259,18 +303,28 @@
 <td></td></tr>
 <tr><td><a href="Amqp_exchange.html#TYPEt">t</a> [<a href="Amqp_exchange.html">Amqp_exchange</a>]</td>
 <td></td></tr>
-<tr><td><a href="Amqp_channel.html#TYPEt">t</a> [<a href="Amqp_channel.html">Amqp_channel</a>]</td>
-<td></td></tr>
 <tr><td><a href="Amqp_queue.html#TYPEt">t</a> [<a href="Amqp_queue.html">Amqp_queue</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_connection.html#TYPEt">t</a> [<a href="Amqp_connection.html">Amqp_connection</a>]</td>
+<td></td></tr>
+<tr><td><a href="Amqp_channel.html#TYPEt">t</a> [<a href="Amqp_channel.html">Amqp_channel</a>]</td>
+<td></td></tr>
+<tr><td><a href="Amqp_message.html#TYPEt">t</a> [<a href="Amqp_message.html">Amqp_message</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_types.html#TYPEtable">table</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
 <td></td></tr>
 <tr><td><a href="Amqp_types.html#TYPEtimestamp">timestamp</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
 <td></td></tr>
+<tr><td><a href="Amqp_channel.Transaction.html#TYPEtx">tx</a> [<a href="Amqp_channel.Transaction.html">Amqp_channel.Transaction</a>]</td>
+<td><div class="info">
+Hmm.
+</div>
+</td></tr>
 <tr><td align="left"><br>V</td></tr>
 <tr><td><a href="Amqp_types.html#TYPEvalue">value</a> [<a href="Amqp_types.html">Amqp_types</a>]</td>
+<td></td></tr>
+<tr><td align="left"><br>W</td></tr>
+<tr><td><a href="Amqp_channel.html#TYPEwith_confirm">with_confirm</a> [<a href="Amqp_channel.html">Amqp_channel</a>]</td>
 <td></td></tr>
 </table>
 </body>

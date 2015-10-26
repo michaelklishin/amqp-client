@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Tx.Commit</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Tx.Commit</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Tx.Commit_ok.html" title="Amqp_spec.Tx.Commit_ok">Previous</a>
@@ -31,12 +33,13 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Tx.Commit.html">Amqp_spec.Tx.Commit</a></h1>
 
-<pre><span class="keyword">module</span> Commit: <code class="code">sig</code> <a href="Amqp_spec.Tx.Commit.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Commit: <code class="code">sig</code> <a href="Amqp_spec.Tx.Commit.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method commits all message publications and acknowledgments performed in the current transaction. A new transaction starts immediately after a commit.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">('a, 'a) <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type">unit</code> </pre>
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Commit.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Commit.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">unit -> unit</code></pre>
-<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type">?post_handler:(unit -> unit) -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       unit -> unit Async_kernel.Deferred0.t</code></pre></body></html>
+<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -> unit -> unit Async.Std.Deferred.t</code></pre></body></html>

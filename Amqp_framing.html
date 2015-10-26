@@ -5,7 +5,7 @@
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Amqp_exchange.html">
-<link rel="next" href="Amqp_protocol.html">
+<link rel="next" href="Amqp_io.html">
 <link rel="Up" href="index.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
@@ -17,35 +17,26 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_framing</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_framing</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_exchange.html" title="Amqp_exchange">Previous</a>
 &nbsp;<a class="up" href="index.html" title="Index">Up</a>
-&nbsp;<a class="post" href="Amqp_protocol.html" title="Amqp_protocol">Next</a>
+&nbsp;<a class="post" href="Amqp_io.html" title="Amqp_io">Next</a>
 </div>
 <h1>Module <a href="type_Amqp_framing.html">Amqp_framing</a></h1>
 
 <pre><span class="keyword">module</span> Amqp_framing: <code class="code">sig</code> <a href="Amqp_framing.html">..</a> <code class="code">end</code></pre><div class="info module top">
-read_frame reads a frame from the input, and sends the data to
-    the channel writer<br>
+Internal<br>
 </div>
 <hr width="100%">
-
-<pre><span id="EXCEPTIONUnknown_frame_type"><span class="keyword">exception</span> Unknown_frame_type</span> <span class="keyword">of</span> <code class="type">int</code></pre>
-
-<pre><span id="EXCEPTIONConnection_closed"><span class="keyword">exception</span> Connection_closed</span></pre>
-
-<pre><span id="EXCEPTIONBusy"><span class="keyword">exception</span> Busy</span></pre>
-
-<pre><span id="EXCEPTIONUnhandled_method"><span class="keyword">exception</span> Unhandled_method</span> <span class="keyword">of</span> <code class="type"><a href="Amqp_types.html#TYPEmessage_id">Amqp_types.message_id</a></code></pre>
-
-<pre><span id="EXCEPTIONUnhandled_header"><span class="keyword">exception</span> Unhandled_header</span> <span class="keyword">of</span> <code class="type"><a href="Amqp_types.html#TYPEclass_id">Amqp_types.class_id</a></code></pre>
 
 <pre><span id="TYPEchannel_no"><span class="keyword">type</span> <code class="type"></code>channel_no</span> = <code class="type">int</code> </pre>
 
@@ -55,20 +46,20 @@ read_frame reads a frame from the input, and sends the data to
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTmessage.Method"><span class="constructor">Method</span></span> <span class="keyword">of</span> <code class="type"><a href="Amqp_types.html#TYPEmessage_id">Amqp_types.message_id</a> * <a href="Amqp_protocol.Input.html#TYPEt">Amqp_protocol.Input.t</a></code></code></td>
+<code><span id="TYPEELTmessage.Method"><span class="constructor">Method</span></span> <span class="keyword">of</span> <code class="type"><a href="Amqp_types.html#TYPEmessage_id">Amqp_types.message_id</a> * <a href="Amqp_io.Input.html#TYPEt">Amqp_io.Input.t</a></code></code></td>
 
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code><span class="keyword">|</span></code></td>
 <td align="left" valign="top" >
-<code><span id="TYPEELTmessage.Content"><span class="constructor">Content</span></span> <span class="keyword">of</span> <code class="type"><a href="Amqp_types.html#TYPEclass_id">Amqp_types.class_id</a> * <a href="Amqp_protocol.Input.html#TYPEt">Amqp_protocol.Input.t</a> * string</code></code></td>
+<code><span id="TYPEELTmessage.Content"><span class="constructor">Content</span></span> <span class="keyword">of</span> <code class="type"><a href="Amqp_types.html#TYPEclass_id">Amqp_types.class_id</a> * <a href="Amqp_io.Input.html#TYPEt">Amqp_io.Input.t</a> * string</code></code></td>
 
 </tr></table>
 
 
 
-<pre><span id="TYPEdata"><span class="keyword">type</span> <code class="type"></code>data</span> = <code class="type"><a href="Amqp_protocol.Input.html#TYPEt">Amqp_protocol.Input.t</a></code> </pre>
+<pre><span id="TYPEdata"><span class="keyword">type</span> <code class="type"></code>data</span> = <code class="type"><a href="Amqp_io.Input.html#TYPEt">Amqp_io.Input.t</a></code> </pre>
 
 
 <pre><span id="TYPEcontent_handler"><span class="keyword">type</span> <code class="type"></code>content_handler</span> = <code class="type"><a href="Amqp_framing.html#TYPEdata">data</a> * string -> unit</code> </pre>
@@ -80,18 +71,22 @@ read_frame reads a frame from the input, and sends the data to
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 
 
-<pre><span id="VALwrite_method"><span class="keyword">val</span> write_method</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> * <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -><br>       int * int -> <a href="Amqp_protocol.Output.html#TYPEt">Amqp_protocol.Output.t</a> -> unit</code></pre>
-<pre><span id="VALwrite_content"><span class="keyword">val</span> write_content</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> * <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -><br>       int -> <a href="Amqp_protocol.Output.html#TYPEt">Amqp_protocol.Output.t</a> -> string -> unit</code></pre>
+<pre><span id="VALwrite_message"><span class="keyword">val</span> write_message</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> * <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -><br>       <a href="Amqp_types.html#TYPEmessage_id">Amqp_types.message_id</a> * (<a href="Amqp_io.Output.html#TYPEt">Amqp_io.Output.t</a> -> <a href="Amqp_io.Output.html#TYPEt">Amqp_io.Output.t</a>) -><br>       (<a href="Amqp_types.html#TYPEclass_id">Amqp_types.class_id</a> * (<a href="Amqp_io.Output.html#TYPEt">Amqp_io.Output.t</a> -> <a href="Amqp_io.Output.html#TYPEt">Amqp_io.Output.t</a>) *<br>        Core.Std.String.t)<br>       option -> unit Async.Std.Deferred.t</code></pre>
+<pre><span id="VALsend_heartbeat"><span class="keyword">val</span> send_heartbeat</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> unit</code></pre>
 <pre><span id="VALregister_method_handler"><span class="keyword">val</span> register_method_handler</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> * <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -><br>       <a href="Amqp_types.html#TYPEmessage_id">Amqp_types.message_id</a> -> <a href="Amqp_framing.html#TYPEmethod_handler">method_handler</a> -> unit</code></pre>
 <pre><span id="VALregister_content_handler"><span class="keyword">val</span> register_content_handler</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> * <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -><br>       <a href="Amqp_types.html#TYPEclass_id">Amqp_types.class_id</a> -> <a href="Amqp_framing.html#TYPEcontent_handler">content_handler</a> -> unit</code></pre>
 <pre><span id="VALderegister_method_handler"><span class="keyword">val</span> deregister_method_handler</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> * <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -> <a href="Amqp_types.html#TYPEmessage_id">Amqp_types.message_id</a> -> unit</code></pre>
 <pre><span id="VALderegister_content_handler"><span class="keyword">val</span> deregister_content_handler</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> * <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -> <a href="Amqp_types.html#TYPEclass_id">Amqp_types.class_id</a> -> unit</code></pre>
+<pre><span id="VALset_flow"><span class="keyword">val</span> set_flow</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -> bool -> unit</code></pre>
+<pre><span id="VALset_flow_all"><span class="keyword">val</span> set_flow_all</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> bool -> unit</code></pre>
 <pre><span id="VALopen_channel"><span class="keyword">val</span> open_channel</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -> unit Async.Std.Deferred.t</code></pre>
-<pre><span id="VALclose_channel"><span class="keyword">val</span> close_channel</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -> unit</code></pre>
+<pre><span id="VALclose_channel"><span class="keyword">val</span> close_channel</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -> unit Async.Std.Deferred.t</code></pre>
+<pre><span id="VALflush_channel"><span class="keyword">val</span> flush_channel</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> <a href="Amqp_framing.html#TYPEchannel_no">channel_no</a> -> unit Async.Std.Deferred.t</code></pre>
 <pre><span id="VALflush"><span class="keyword">val</span> flush</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre>
 <pre><span id="VALid"><span class="keyword">val</span> id</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> string</code></pre>
-<pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">id:string -> port:int -> string -> <a href="Amqp_framing.html#TYPEt">t</a> Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">id:string -><br>       Async.Std.Reader.t -><br>       Async.Std.Writer.t -> <a href="Amqp_framing.html#TYPEt">t</a> Async.Std.Deferred.t</code></pre><div class="info ">
 <code class="code">writer</code> is channel 0 writer. It must be attached<br>
 </div>
 
+<pre><span id="VALclose"><span class="keyword">val</span> close</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre>
 <pre><span id="VALset_max_length"><span class="keyword">val</span> set_max_length</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">t</a> -> int -> unit</code></pre></body></html>

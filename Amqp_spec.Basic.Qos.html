@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Basic.Qos</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Basic.Qos</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Basic.Qos_ok.html" title="Amqp_spec.Basic.Qos_ok">Previous</a>
@@ -31,35 +33,45 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Basic.Qos.html">Amqp_spec.Basic.Qos</a></h1>
 
-<pre><span class="keyword">module</span> Qos: <code class="code">sig</code> <a href="Amqp_spec.Basic.Qos.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Qos: <code class="code">sig</code> <a href="Amqp_spec.Basic.Qos.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method requests a specific quality of service. The QoS can be specified for the current channel or for all channels on the connection. The particular properties and semantics of a qos method always depend on the content class semantics. Though the qos method could in principle apply to both peers, it is currently meaningful only for the server.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(int -> int -> bool -> 'a, 'a) <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.prefetch_size">prefetch_size</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPElong">Amqp_types.long</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The client can request that messages be sent in advance so that when the client finishes processing a message, the following message is already held locally, rather than needing to be sent down the channel. Prefetching gives a performance improvement. This field specifies the prefetch window size in octets. The server will send a message in advance if it is equal to or smaller in size than the available prefetch size (and also falls into other prefetch limits). May be set to zero, meaning "no specific limit", although other prefetch limits may still apply. The prefetch-size is ignored if the no-ack option is set.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.prefetch_count">prefetch_count</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEshort">Amqp_types.short</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Specifies a prefetch window in terms of whole messages. This field may be used in combination with the prefetch-size field; a message will only be sent in advance if both prefetch windows (and those at the channel and connection level) allow it. The prefetch-count is ignored if the no-ack option is set.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.global">global</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+RabbitMQ has reinterpreted this field. The original specification said: "By default the QoS settings apply to the current channel only. If this field is set, they are applied to the entire connection." Instead, RabbitMQ takes global=false to mean that the QoS settings should apply per-consumer (for new consumers on the channel; existing ones being unaffected) and global=true to mean that the QoS settings should apply per-channel.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 }
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Qos.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Qos.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">prefetch_size:<a href="Amqp_types.html#TYPElong">Amqp_types.long</a> -><br>       prefetch_count:<a href="Amqp_types.html#TYPEshort">Amqp_types.short</a> -><br>       global:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -> unit -> <a href="Amqp_spec.Basic.Qos.html#TYPEt">t</a></code></pre>
-<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type">?post_handler:(unit -> unit) -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Basic.Qos.html#TYPEt">t</a> -> unit Async_kernel.Deferred0.t</code></pre></body></html>
+<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Basic.Qos.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre></body></html>

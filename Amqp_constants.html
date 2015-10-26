@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_constants</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_constants</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_connection.html" title="Amqp_connection">Previous</a>
@@ -31,7 +33,10 @@
 </div>
 <h1>Module <a href="type_Amqp_constants.html">Amqp_constants</a></h1>
 
-<pre><span class="keyword">module</span> Amqp_constants: <code class="code">sig</code> <a href="Amqp_constants.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Amqp_constants: <code class="code">sig</code> <a href="Amqp_constants.html">..</a> <code class="code">end</code></pre><div class="info module top">
+Internal - Low level protocol description<br>
+</div>
+<hr width="100%">
 
 <pre><span id="VALframe_method"><span class="keyword">val</span> frame_method</span> : <code class="type">int</code></pre>
 <pre><span id="VALframe_header"><span class="keyword">val</span> frame_header</span> : <code class="type">int</code></pre>
@@ -39,21 +44,75 @@
 <pre><span id="VALframe_heartbeat"><span class="keyword">val</span> frame_heartbeat</span> : <code class="type">int</code></pre>
 <pre><span id="VALframe_min_size"><span class="keyword">val</span> frame_min_size</span> : <code class="type">int</code></pre>
 <pre><span id="VALframe_end"><span class="keyword">val</span> frame_end</span> : <code class="type">int</code></pre>
-<pre><span id="VALreply_success"><span class="keyword">val</span> reply_success</span> : <code class="type">int</code></pre>
-<pre><span id="VALcontent_too_large"><span class="keyword">val</span> content_too_large</span> : <code class="type">int</code></pre>
-<pre><span id="VALno_consumers"><span class="keyword">val</span> no_consumers</span> : <code class="type">int</code></pre>
-<pre><span id="VALconnection_forced"><span class="keyword">val</span> connection_forced</span> : <code class="type">int</code></pre>
-<pre><span id="VALinvalid_path"><span class="keyword">val</span> invalid_path</span> : <code class="type">int</code></pre>
-<pre><span id="VALaccess_refused"><span class="keyword">val</span> access_refused</span> : <code class="type">int</code></pre>
-<pre><span id="VALnot_found"><span class="keyword">val</span> not_found</span> : <code class="type">int</code></pre>
-<pre><span id="VALresource_locked"><span class="keyword">val</span> resource_locked</span> : <code class="type">int</code></pre>
-<pre><span id="VALprecondition_failed"><span class="keyword">val</span> precondition_failed</span> : <code class="type">int</code></pre>
-<pre><span id="VALframe_error"><span class="keyword">val</span> frame_error</span> : <code class="type">int</code></pre>
-<pre><span id="VALsyntax_error"><span class="keyword">val</span> syntax_error</span> : <code class="type">int</code></pre>
-<pre><span id="VALcommand_invalid"><span class="keyword">val</span> command_invalid</span> : <code class="type">int</code></pre>
-<pre><span id="VALchannel_error"><span class="keyword">val</span> channel_error</span> : <code class="type">int</code></pre>
-<pre><span id="VALunexpected_frame"><span class="keyword">val</span> unexpected_frame</span> : <code class="type">int</code></pre>
-<pre><span id="VALresource_error"><span class="keyword">val</span> resource_error</span> : <code class="type">int</code></pre>
-<pre><span id="VALnot_allowed"><span class="keyword">val</span> not_allowed</span> : <code class="type">int</code></pre>
-<pre><span id="VALnot_implemented"><span class="keyword">val</span> not_implemented</span> : <code class="type">int</code></pre>
-<pre><span id="VALinternal_error"><span class="keyword">val</span> internal_error</span> : <code class="type">int</code></pre></body></html>
+<pre><span id="VALreply_success"><span class="keyword">val</span> reply_success</span> : <code class="type">int</code></pre><div class="info ">
+Indicates that the method completed successfully. This reply code is reserved for future use - the current protocol design does not use positive confirmation and reply codes are sent only in case of an error.<br>
+</div>
+
+<pre><span id="VALcontent_too_large"><span class="keyword">val</span> content_too_large</span> : <code class="type">int</code></pre><div class="info ">
+The client attempted to transfer content larger than the server could accept at the present time. The client may retry at a later time.<br>
+</div>
+
+<pre><span id="VALno_consumers"><span class="keyword">val</span> no_consumers</span> : <code class="type">int</code></pre><div class="info ">
+When the exchange cannot deliver to a consumer when the immediate flag is set. As a result of pending data on the queue or the absence of any consumers of the queue.<br>
+</div>
+
+<pre><span id="VALconnection_forced"><span class="keyword">val</span> connection_forced</span> : <code class="type">int</code></pre><div class="info ">
+An operator intervened to close the connection for some reason. The client may retry at some later date.<br>
+</div>
+
+<pre><span id="VALinvalid_path"><span class="keyword">val</span> invalid_path</span> : <code class="type">int</code></pre><div class="info ">
+The client tried to work with an unknown virtual host.<br>
+</div>
+
+<pre><span id="VALaccess_refused"><span class="keyword">val</span> access_refused</span> : <code class="type">int</code></pre><div class="info ">
+The client attempted to work with a server entity to which it has no access due to security settings.<br>
+</div>
+
+<pre><span id="VALnot_found"><span class="keyword">val</span> not_found</span> : <code class="type">int</code></pre><div class="info ">
+The client attempted to work with a server entity that does not exist.<br>
+</div>
+
+<pre><span id="VALresource_locked"><span class="keyword">val</span> resource_locked</span> : <code class="type">int</code></pre><div class="info ">
+The client attempted to work with a server entity to which it has no access because another client is working with it.<br>
+</div>
+
+<pre><span id="VALprecondition_failed"><span class="keyword">val</span> precondition_failed</span> : <code class="type">int</code></pre><div class="info ">
+The client requested a method that was not allowed because some precondition failed.<br>
+</div>
+
+<pre><span id="VALframe_error"><span class="keyword">val</span> frame_error</span> : <code class="type">int</code></pre><div class="info ">
+The sender sent a malformed frame that the recipient could not decode. This strongly implies a programming error in the sending peer.<br>
+</div>
+
+<pre><span id="VALsyntax_error"><span class="keyword">val</span> syntax_error</span> : <code class="type">int</code></pre><div class="info ">
+The sender sent a frame that contained illegal values for one or more fields. This strongly implies a programming error in the sending peer.<br>
+</div>
+
+<pre><span id="VALcommand_invalid"><span class="keyword">val</span> command_invalid</span> : <code class="type">int</code></pre><div class="info ">
+The client sent an invalid sequence of frames, attempting to perform an operation that was considered invalid by the server. This usually implies a programming error in the client.<br>
+</div>
+
+<pre><span id="VALchannel_error"><span class="keyword">val</span> channel_error</span> : <code class="type">int</code></pre><div class="info ">
+The client attempted to work with a channel that had not been correctly opened. This most likely indicates a fault in the client layer.<br>
+</div>
+
+<pre><span id="VALunexpected_frame"><span class="keyword">val</span> unexpected_frame</span> : <code class="type">int</code></pre><div class="info ">
+The peer sent a frame that was not expected, usually in the context of a content header and body. This strongly indicates a fault in the peer's content processing.<br>
+</div>
+
+<pre><span id="VALresource_error"><span class="keyword">val</span> resource_error</span> : <code class="type">int</code></pre><div class="info ">
+The server could not complete the method because it lacked sufficient resources. This may be due to the client creating too many of some type of entity.<br>
+</div>
+
+<pre><span id="VALnot_allowed"><span class="keyword">val</span> not_allowed</span> : <code class="type">int</code></pre><div class="info ">
+The client tried to work with some entity in a manner that is prohibited by the server, due to security settings or by some other criteria.<br>
+</div>
+
+<pre><span id="VALnot_implemented"><span class="keyword">val</span> not_implemented</span> : <code class="type">int</code></pre><div class="info ">
+The client tried to use functionality that is not implemented in the server.<br>
+</div>
+
+<pre><span id="VALinternal_error"><span class="keyword">val</span> internal_error</span> : <code class="type">int</code></pre><div class="info ">
+The server could not complete the method because of an internal error. The server may require intervention by an operator in order to resume normal operations.<br>
+</div>
+</body></html>

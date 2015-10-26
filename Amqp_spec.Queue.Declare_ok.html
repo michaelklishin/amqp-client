@@ -16,12 +16,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Queue.Declare_ok</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Queue.Declare_ok</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="Amqp_spec.Queue.html" title="Amqp_spec.Queue">Up</a>
@@ -29,16 +31,21 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Queue.Declare_ok.html">Amqp_spec.Queue.Declare_ok</a></h1>
 
-<pre><span class="keyword">module</span> Declare_ok: <code class="code">sig</code> <a href="Amqp_spec.Queue.Declare_ok.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Declare_ok: <code class="code">sig</code> <a href="Amqp_spec.Queue.Declare_ok.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method confirms a Declare method and confirms the name of the queue, essential for automatically-named queues.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(string -> int -> int -> 'a, 'a) <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.queue">queue</span>&nbsp;: <code class="type"><a href="Amqp_spec.html#TYPEqueue_name">Amqp_spec.queue_name</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Reports the name of the queue. If the server generated a queue name, this field contains that name.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
@@ -52,11 +59,13 @@
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.consumer_count">consumer_count</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPElong">Amqp_types.long</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Reports the number of active consumers for the queue. Note that consumers can suspend activity (Channel.Flow) in which case they do not appear in this count.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 }
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Queue.Declare_ok.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Queue.Declare_ok.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">queue:<a href="Amqp_spec.html#TYPEqueue_name">Amqp_spec.queue_name</a> -><br>       message_count:<a href="Amqp_spec.html#TYPEmessage_count">Amqp_spec.message_count</a> -><br>       consumer_count:<a href="Amqp_types.html#TYPElong">Amqp_types.long</a> -> unit -> <a href="Amqp_spec.Queue.Declare_ok.html#TYPEt">t</a></code></pre></body></html>

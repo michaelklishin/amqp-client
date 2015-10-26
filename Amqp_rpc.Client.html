@@ -16,12 +16,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_rpc.Client</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_rpc.Client</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="Amqp_rpc.html" title="Amqp_rpc">Up</a>
@@ -29,7 +31,10 @@
 </div>
 <h1>Module <a href="type_Amqp_rpc.Client.html">Amqp_rpc.Client</a></h1>
 
-<pre><span class="keyword">module</span> Client: <code class="code">sig</code> <a href="Amqp_rpc.Client.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Client: <code class="code">sig</code> <a href="Amqp_rpc.Client.html">..</a> <code class="code">end</code></pre><div class="info module top">
+Rpc Client pattern<br>
+</div>
+<hr width="100%">
 
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 
@@ -38,10 +43,20 @@
 Initialize a client with the <code class="code">id</code> for tracing<br>
 </div>
 
-<pre><span id="VALcall"><span class="keyword">val</span> call</span> : <code class="type"><a href="Amqp_rpc.Client.html#TYPEt">t</a> -><br>       ttl:int -><br>       <a href="Amqp_queue.html#TYPEt">Amqp_queue.t</a> -> string -> [ `Ok of string | `Timedout ] Async.Std.Deferred.t</code></pre><div class="info ">
-Make an rpc call to the given queue.
-        <code class="code">ttl</code> is the message timeout.<br>
+<pre><span id="VALcall"><span class="keyword">val</span> call</span> : <code class="type"><a href="Amqp_rpc.Client.html#TYPEt">t</a> -><br>       ttl:int -><br>       routing_key:string -><br>       headers:<a href="Amqp_types.html#TYPEheader">Amqp_types.header</a> list -><br>       'a <a href="Amqp_exchange.html#TYPEt">Amqp_exchange.t</a> -><br>       <a href="Amqp_spec.Basic.Content.html#TYPEt">Amqp_spec.Basic.Content.t</a> * string -><br>       <a href="Amqp_message.html#TYPEmessage">Amqp_message.message</a> option Async.Std.Deferred.t</code></pre><div class="info ">
+Make an rpc call to the exchange using the routing key and headers.<br>
 </div>
+<div class="param_info"><code class="code">ttl</code> : is the message timeout.
+<p>
+
+        To call directly to a named queue, use
+        <code class="code">call t Exchange.default ~routing_key:"name_of_the_queue" ~headers:[]</code>
+<p>
+
+        The function allows the call to specify both a routing key and
+        headers regardless of the type of exchange used, as exchanges
+        may be chained in a way where both headers and routing keys
+        are used.</div>
 
 <pre><span id="VALclose"><span class="keyword">val</span> close</span> : <code class="type"><a href="Amqp_rpc.Client.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
 Release resources<br>

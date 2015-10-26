@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Basic.Ack</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Basic.Ack</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Basic.Get.html" title="Amqp_spec.Basic.Get">Previous</a>
@@ -31,9 +33,11 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Basic.Ack.html">Amqp_spec.Basic.Ack</a></h1>
 
-<pre><span class="keyword">module</span> Ack: <code class="code">sig</code> <a href="Amqp_spec.Basic.Ack.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Ack: <code class="code">sig</code> <a href="Amqp_spec.Basic.Ack.html">..</a> <code class="code">end</code></pre><div class="info module top">
+When sent by the client, this method acknowledges one or more messages delivered via the Deliver or Get-Ok methods. When sent by server, this method acknowledges one or more messages published with the Publish method on a channel in confirm mode. The acknowledgement can be for a single message or a set of messages up to and including a specific message.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(int -> bool -> 'a, 'a) <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -47,13 +51,15 @@
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.multiple">multiple</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+If set to 1, the delivery tag is treated as "up to and including", so that multiple messages can be acknowledged with a single method. If set to zero, the delivery tag refers to a single message. If the multiple field is 1, and the delivery tag is zero, this indicates acknowledgement of all outstanding messages.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 }
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Ack.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Ack.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">delivery_tag:<a href="Amqp_spec.html#TYPEdelivery_tag">Amqp_spec.delivery_tag</a> -><br>       multiple:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -> unit -> <a href="Amqp_spec.Basic.Ack.html#TYPEt">t</a></code></pre>
-<pre><span id="VALreply"><span class="keyword">val</span> reply</span> : <code class="type">?post_handler:(<a href="Amqp_spec.Basic.Ack.html#TYPEt">t</a> -> unit) -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Basic.Ack.html#TYPEt">t</a> Async_kernel.Deferred0.t</code></pre>
+<pre><span id="VALreply"><span class="keyword">val</span> reply</span> : <code class="type">?once:bool -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Basic.Ack.html#TYPEt">t</a> Async_kernel.Deferred0.t</code></pre>
 <pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Basic.Ack.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre></body></html>

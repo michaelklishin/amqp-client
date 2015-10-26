@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Channel</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Channel</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Exchange.html" title="Amqp_spec.Exchange">Previous</a>
@@ -31,12 +33,32 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Channel.html">Amqp_spec.Channel</a></h1>
 
-<pre><span class="keyword">module</span> Channel: <code class="code">sig</code> <a href="Amqp_spec.Channel.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Channel: <code class="code">sig</code> <a href="Amqp_spec.Channel.html">..</a> <code class="code">end</code></pre><div class="info module top">
+The channel class provides methods for a client to establish a channel to a server and for both peers to operate the channel thereafter.<br>
+</div>
+<hr width="100%">
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Open_ok.html">Open_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Open_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Open.html">Open</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Open.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Flow_ok.html">Flow_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Flow_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Flow.html">Flow</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Flow.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Close_ok.html">Close_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Close_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Close.html">Close</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Close.html">..</a> <code class="code">end</code></pre>
-<pre><span id="VALmethod_to_string"><span class="keyword">val</span> method_to_string</span> : <code class="type">int -> string</code></pre></body></html>
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Open_ok.html">Open_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Open_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method signals to the client that the channel is ready for use.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Open.html">Open</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Open.html">..</a> <code class="code">end</code></pre><div class="info">
+This method opens a channel to the server.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Flow_ok.html">Flow_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Flow_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+Confirms to the peer that a flow command was received and processed.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Flow.html">Flow</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Flow.html">..</a> <code class="code">end</code></pre><div class="info">
+This method asks the peer to pause or restart the flow of content data sent by a consumer.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Close_ok.html">Close_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Close_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms a Channel.Close method and tells the recipient that it is safe to release resources for the channel.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.Close.html">Close</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.Close.html">..</a> <code class="code">end</code></pre><div class="info">
+This method indicates that the sender wants to close the channel.
+</div>
+</body></html>

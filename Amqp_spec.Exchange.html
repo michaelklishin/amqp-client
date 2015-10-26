@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Exchange</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Exchange</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Queue.html" title="Amqp_spec.Queue">Previous</a>
@@ -31,14 +33,40 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Exchange.html">Amqp_spec.Exchange</a></h1>
 
-<pre><span class="keyword">module</span> Exchange: <code class="code">sig</code> <a href="Amqp_spec.Exchange.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Exchange: <code class="code">sig</code> <a href="Amqp_spec.Exchange.html">..</a> <code class="code">end</code></pre><div class="info module top">
+Exchanges match and distribute messages across queues. Exchanges can be configured in the server or declared at runtime.<br>
+</div>
+<hr width="100%">
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Declare_ok.html">Declare_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Declare_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Declare.html">Declare</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Declare.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Delete_ok.html">Delete_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Delete_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Delete.html">Delete</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Delete.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Bind_ok.html">Bind_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Bind_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Bind.html">Bind</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Bind.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Unbind_ok.html">Unbind_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Unbind_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Unbind.html">Unbind</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Unbind.html">..</a> <code class="code">end</code></pre>
-<pre><span id="VALmethod_to_string"><span class="keyword">val</span> method_to_string</span> : <code class="type">int -> string</code></pre></body></html>
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Declare_ok.html">Declare_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Declare_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms a Declare method and confirms the name of the exchange, essential for automatically-named exchanges.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Declare.html">Declare</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Declare.html">..</a> <code class="code">end</code></pre><div class="info">
+This method creates an exchange if it does not already exist, and if the exchange exists, verifies that it is of the correct and expected class.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Delete_ok.html">Delete_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Delete_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms the deletion of an exchange.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Delete.html">Delete</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Delete.html">..</a> <code class="code">end</code></pre><div class="info">
+This method deletes an exchange.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Bind_ok.html">Bind_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Bind_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms that the bind was successful.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Bind.html">Bind</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Bind.html">..</a> <code class="code">end</code></pre><div class="info">
+This method binds an exchange to an exchange.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Unbind_ok.html">Unbind_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Unbind_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms that the unbind was successful.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Unbind.html">Unbind</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Unbind.html">..</a> <code class="code">end</code></pre><div class="info">
+This method unbinds an exchange from an exchange.
+</div>
+</body></html>

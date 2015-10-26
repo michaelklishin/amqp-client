@@ -16,12 +16,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Basic.Content</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Basic.Content</title>
 </head>
 <body>
 <div class="navbar">&nbsp;<a class="up" href="Amqp_spec.Basic.html" title="Amqp_spec.Basic">Up</a>
@@ -31,7 +33,6 @@
 
 <pre><span class="keyword">module</span> Content: <code class="code">sig</code> <a href="Amqp_spec.Basic.Content.html">..</a> <code class="code">end</code></pre><hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(string option -><br>        string option -><br>        <a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> option -><br>        int option -><br>        int option -><br>        string option -><br>        string option -><br>        string option -><br>        string option -><br>        <a href="Amqp_types.html#TYPEtimestamp">Amqp_types.timestamp</a> option -><br>        string option -> string option -> string option -> string option -> 'a, 'a)<br>       <a href="Amqp_types.Content.html#TYPEspec">Amqp_types.Content.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -135,5 +136,4 @@
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.Content.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.Content.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">?content_type:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       ?content_encoding:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       ?headers:<a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -><br>       ?delivery_mode:<a href="Amqp_types.html#TYPEoctet">Amqp_types.octet</a> -><br>       ?priority:<a href="Amqp_types.html#TYPEoctet">Amqp_types.octet</a> -><br>       ?correlation_id:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       ?reply_to:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       ?expiration:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       ?message_id:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       ?timestamp:<a href="Amqp_types.html#TYPEtimestamp">Amqp_types.timestamp</a> -><br>       ?amqp_type:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       ?user_id:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       ?app_id:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       ?reserved:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -> unit -> <a href="Amqp_spec.Basic.Content.html#TYPEt">t</a></code></pre></body></html>

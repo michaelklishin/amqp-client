@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Connection.Start</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Connection.Start</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Connection.Start_ok.html" title="Amqp_spec.Connection.Start_ok">Previous</a>
@@ -31,23 +33,31 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Connection.Start.html">Amqp_spec.Connection.Start</a></h1>
 
-<pre><span class="keyword">module</span> Start: <code class="code">sig</code> <a href="Amqp_spec.Connection.Start.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Start: <code class="code">sig</code> <a href="Amqp_spec.Connection.Start.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method starts the connection negotiation process by telling the client the protocol version that the server proposes, along with a list of security mechanisms which the client can use for authentication.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(int -> int -> <a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -> string -> string -> 'a, 'a)<br>       <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.version_major">version_major</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEoctet">Amqp_types.octet</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The major version number can take any value from 0 to 99 as defined in the AMQP specification.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.version_minor">version_minor</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEoctet">Amqp_types.octet</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+The minor version number can take any value from 0 to 99 as defined in the AMQP specification.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
@@ -61,19 +71,24 @@
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.mechanisms">mechanisms</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPElongstr">Amqp_types.longstr</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+A list of the security mechanisms that the server supports, delimited by spaces.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.locales">locales</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPElongstr">Amqp_types.longstr</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+A list of the message locales that the server supports, delimited by spaces. The locale defines the language in which the server will send reply texts.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 }
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Start.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Start.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">version_major:<a href="Amqp_types.html#TYPEoctet">Amqp_types.octet</a> -><br>       version_minor:<a href="Amqp_types.html#TYPEoctet">Amqp_types.octet</a> -><br>       server_properties:<a href="Amqp_spec.html#TYPEpeer_properties">Amqp_spec.peer_properties</a> -><br>       mechanisms:<a href="Amqp_types.html#TYPElongstr">Amqp_types.longstr</a> -><br>       locales:<a href="Amqp_types.html#TYPElongstr">Amqp_types.longstr</a> -> unit -> <a href="Amqp_spec.Connection.Start.html#TYPEt">t</a></code></pre>
-<pre><span id="VALreply"><span class="keyword">val</span> reply</span> : <code class="type">?post_handler:(<a href="Amqp_spec.Connection.Start.html#TYPEt">t</a> -> unit) -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       (<a href="Amqp_spec.Connection.Start.html#TYPEt">t</a> -><br>        <a href="Amqp_spec.Connection.Start_ok.html#TYPEt">Amqp_spec.Connection.Start_ok.t</a> Async.Std.Deferred.t) -><br>       unit Async.Std.Deferred.t</code></pre></body></html>
+<pre><span id="VALreply"><span class="keyword">val</span> reply</span> : <code class="type">?once:bool -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       (<a href="Amqp_spec.Connection.Start.html#TYPEt">t</a> -><br>        <a href="Amqp_spec.Connection.Start_ok.html#TYPEt">Amqp_spec.Connection.Start_ok.t</a> Async.Std.Deferred.t) -><br>       unit Async.Std.Deferred.t</code></pre></body></html>

@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Tx</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Tx</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Confirm.html" title="Amqp_spec.Confirm">Previous</a>
@@ -31,12 +33,32 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Tx.html">Amqp_spec.Tx</a></h1>
 
-<pre><span class="keyword">module</span> Tx: <code class="code">sig</code> <a href="Amqp_spec.Tx.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Tx: <code class="code">sig</code> <a href="Amqp_spec.Tx.html">..</a> <code class="code">end</code></pre><div class="info module top">
+The Tx class allows publish and ack operations to be batched into atomic units of work. The intention is that all publish and ack requests issued within a transaction will complete successfully or none of them will. Servers SHOULD implement atomic transactions at least where all publish or ack requests affect a single queue. Transactions that cover multiple queues may be non-atomic, given that queues can be created and destroyed asynchronously, and such events do not form part of any transaction. Further, the behaviour of transactions with respect to the immediate and mandatory flags on Basic.Publish methods is not defined.<br>
+</div>
+<hr width="100%">
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Select_ok.html">Select_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Select_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Select.html">Select</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Select.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Commit_ok.html">Commit_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Commit_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Commit.html">Commit</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Commit.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Rollback_ok.html">Rollback_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Rollback_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Rollback.html">Rollback</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Rollback.html">..</a> <code class="code">end</code></pre>
-<pre><span id="VALmethod_to_string"><span class="keyword">val</span> method_to_string</span> : <code class="type">int -> string</code></pre></body></html>
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Select_ok.html">Select_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Select_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms to the client that the channel was successfully set to use standard transactions.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Select.html">Select</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Select.html">..</a> <code class="code">end</code></pre><div class="info">
+This method sets the channel to use standard transactions.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Commit_ok.html">Commit_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Commit_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms to the client that the commit succeeded.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Commit.html">Commit</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Commit.html">..</a> <code class="code">end</code></pre><div class="info">
+This method commits all message publications and acknowledgments performed in the current transaction.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Rollback_ok.html">Rollback_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Rollback_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms to the client that the rollback succeeded.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Rollback.html">Rollback</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Rollback.html">..</a> <code class="code">end</code></pre><div class="info">
+This method abandons all message publications and acknowledgments performed in the current transaction.
+</div>
+</body></html>

@@ -12,55 +12,60 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_exchange</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_exchange</title>
 </head>
 <body>
 <code class="code"><span class="keyword">sig</span><br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;default&nbsp;:&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;amq_direct&nbsp;:&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;amq_fanout&nbsp;:&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;amq_topic&nbsp;:&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;amq_header&nbsp;:&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;exchange_type&nbsp;=&nbsp;<span class="constructor">Direct</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Fanout</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Topic</span>&nbsp;<span class="keywordsign">|</span>&nbsp;<span class="constructor">Headers</span><br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_&nbsp;t<br>
+&nbsp;&nbsp;<span class="keyword">type</span>&nbsp;_&nbsp;exchange_type<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;direct_t&nbsp;:&nbsp;[&nbsp;<span class="keywordsign">`</span><span class="constructor">Queue</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;]&nbsp;<span class="constructor">Amqp_exchange</span>.exchange_type<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;fanout_t&nbsp;:&nbsp;unit&nbsp;<span class="constructor">Amqp_exchange</span>.exchange_type<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;topic_t&nbsp;:&nbsp;[&nbsp;<span class="keywordsign">`</span><span class="constructor">Topic</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;]&nbsp;<span class="constructor">Amqp_exchange</span>.exchange_type<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;match_t&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;<span class="keywordsign">`</span><span class="constructor">Headers</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Amqp_types</span>.header&nbsp;list&nbsp;]&nbsp;<span class="constructor">Amqp_exchange</span>.exchange_type<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;default&nbsp;:&nbsp;[&nbsp;<span class="keywordsign">`</span><span class="constructor">Queue</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;]&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;amq_direct&nbsp;:&nbsp;[&nbsp;<span class="keywordsign">`</span><span class="constructor">Queue</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;]&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;amq_fanout&nbsp;:&nbsp;unit&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;amq_topic&nbsp;:&nbsp;[&nbsp;<span class="keywordsign">`</span><span class="constructor">Topic</span>&nbsp;<span class="keyword">of</span>&nbsp;string&nbsp;]&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;amq_match&nbsp;:&nbsp;[&nbsp;<span class="keywordsign">`</span><span class="constructor">Headers</span>&nbsp;<span class="keyword">of</span>&nbsp;<span class="constructor">Amqp_types</span>.header&nbsp;list&nbsp;]&nbsp;<span class="constructor">Amqp_exchange</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">module</span>&nbsp;<span class="constructor">Internal</span>&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">sig</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;bind_queue&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;unbind_queue&nbsp;:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keyword">end</span><br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;declare&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;?passive:bool&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;?durable:bool&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;?auto_delete:bool&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?internal:bool&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;exchange_type:<span class="constructor">Amqp_exchange</span>.exchange_type&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Amqp_exchange</span>.exchange_type&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;delete&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;?if_unused:bool&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;bind&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;routing_key:<span class="constructor">Amqp_types</span>.shortstr&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;destination:<span class="keywordsign">'</span>c&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;source:<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;unbind&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;routing_key:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;destination:<span class="keywordsign">'</span>c&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;source:<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
 &nbsp;&nbsp;<span class="keyword">val</span>&nbsp;publish&nbsp;:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?content_type:string&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?content_encoding:string&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?correlation_id:string&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?message_id:string&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Amqp_channel</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="keywordsign">'</span>b&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span><br>
 &nbsp;&nbsp;&nbsp;&nbsp;?mandatory:bool&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?reply_to:string&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?expiration:string&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?persistent:bool&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?app_id:string&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;?headers:<span class="constructor">Amqp_types</span>.table&nbsp;<span class="keywordsign">-&gt;</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;routing_key:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;unit&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
-&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;name&nbsp;:&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;routing_key:string&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="constructor">Amqp_message</span>.message&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Async</span>.<span class="constructor">Std</span>.<span class="constructor">Deferred</span>.t<br>
+&nbsp;&nbsp;<span class="keyword">val</span>&nbsp;name&nbsp;:&nbsp;<span class="keywordsign">'</span>a&nbsp;<span class="constructor">Amqp_exchange</span>.t&nbsp;<span class="keywordsign">-&gt;</span>&nbsp;string<br>
 <span class="keyword">end</span></code></body></html>

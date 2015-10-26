@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Tx.Rollback_ok</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Tx.Rollback_ok</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Tx.Commit.html" title="Amqp_spec.Tx.Commit">Previous</a>
@@ -31,11 +33,12 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Tx.Rollback_ok.html">Amqp_spec.Tx.Rollback_ok</a></h1>
 
-<pre><span class="keyword">module</span> Rollback_ok: <code class="code">sig</code> <a href="Amqp_spec.Tx.Rollback_ok.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Rollback_ok: <code class="code">sig</code> <a href="Amqp_spec.Tx.Rollback_ok.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method confirms to the client that the rollback succeeded. Note that if an rollback fails, the server raises a channel exception.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">('a, 'a) <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = <code class="type">unit</code> </pre>
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.Rollback_ok.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.Rollback_ok.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">unit -> unit</code></pre></body></html>

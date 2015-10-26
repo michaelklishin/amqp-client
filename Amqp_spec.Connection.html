@@ -5,7 +5,6 @@
 <meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
 <link rel="Start" href="index.html">
 <link rel="previous" href="Amqp_spec.Channel.html">
-<link rel="next" href="Amqp_spec.Printer.html">
 <link rel="Up" href="Amqp_spec.html">
 <link title="Index of types" rel=Appendix href="index_types.html">
 <link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
@@ -17,32 +16,71 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Connection</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Connection</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Channel.html" title="Amqp_spec.Channel">Previous</a>
 &nbsp;<a class="up" href="Amqp_spec.html" title="Amqp_spec">Up</a>
-&nbsp;<a class="post" href="Amqp_spec.Printer.html" title="Amqp_spec.Printer">Next</a>
-</div>
+&nbsp;</div>
 <h1>Module <a href="type_Amqp_spec.Connection.html">Amqp_spec.Connection</a></h1>
 
-<pre><span class="keyword">module</span> Connection: <code class="code">sig</code> <a href="Amqp_spec.Connection.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Connection: <code class="code">sig</code> <a href="Amqp_spec.Connection.html">..</a> <code class="code">end</code></pre><div class="info module top">
+The connection class provides methods for a client to establish a network connection to a server, and for both peers to operate the connection thereafter.<br>
+</div>
+<hr width="100%">
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Start_ok.html">Start_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Start_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Start.html">Start</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Start.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Secure_ok.html">Secure_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Secure_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Secure.html">Secure</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Secure.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Tune_ok.html">Tune_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Tune_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Tune.html">Tune</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Tune.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Open_ok.html">Open_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Open_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Open.html">Open</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Open.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Close_ok.html">Close_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Close_ok.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Close.html">Close</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Close.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Blocked.html">Blocked</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Blocked.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Unblocked.html">Unblocked</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Unblocked.html">..</a> <code class="code">end</code></pre>
-<pre><span id="VALmethod_to_string"><span class="keyword">val</span> method_to_string</span> : <code class="type">int -> string</code></pre></body></html>
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Start_ok.html">Start_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Start_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method selects a SASL security mechanism.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Start.html">Start</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Start.html">..</a> <code class="code">end</code></pre><div class="info">
+This method starts the connection negotiation process by telling the client the protocol version that the server proposes, along with a list of security mechanisms which the client can use for authentication.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Secure_ok.html">Secure_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Secure_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method attempts to authenticate, passing a block of SASL data for the security mechanism at the server side.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Secure.html">Secure</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Secure.html">..</a> <code class="code">end</code></pre><div class="info">
+The SASL protocol works by exchanging challenges and responses until both peers have received sufficient information to authenticate each other.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Tune_ok.html">Tune_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Tune_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method sends the client's connection tuning parameters to the server.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Tune.html">Tune</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Tune.html">..</a> <code class="code">end</code></pre><div class="info">
+This method proposes a set of connection configuration values to the client.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Open_ok.html">Open_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Open_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method signals to the client that the connection is ready for use.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Open.html">Open</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Open.html">..</a> <code class="code">end</code></pre><div class="info">
+This method opens a connection to a virtual host, which is a collection of resources, and acts to separate multiple application domains within a server.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Close_ok.html">Close_ok</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Close_ok.html">..</a> <code class="code">end</code></pre><div class="info">
+This method confirms a Connection.Close method and tells the recipient that it is safe to release resources for the connection and close the socket.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Close.html">Close</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Close.html">..</a> <code class="code">end</code></pre><div class="info">
+This method indicates that the sender wants to close the connection.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Blocked.html">Blocked</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Blocked.html">..</a> <code class="code">end</code></pre><div class="info">
+This method indicates that a connection has been blocked and does not accept new publishes.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.Unblocked.html">Unblocked</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.Unblocked.html">..</a> <code class="code">end</code></pre><div class="info">
+This method indicates that a connection has been unblocked and now accepts publishes.
+</div>
+</body></html>

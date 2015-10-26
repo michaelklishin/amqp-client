@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp.Queue</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp.Queue</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp.Connection.html" title="Amqp.Connection">Previous</a>
@@ -36,7 +38,7 @@
 <pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
 
 
-<pre><span id="TYPEconsumer"><span class="keyword">type</span> <code class="type"></code>consumer</span> </pre>
+<pre><span id="TYPEconsumer"><span class="keyword">type</span> <code class="type">'a</code> consumer</span> </pre>
 
 
 <pre><span id="VALmessage_ttl"><span class="keyword">val</span> message_ttl</span> : <code class="type">int -> string * <a href="Amqp_types.html#TYPEvalue">Amqp_types.value</a></code></pre>
@@ -46,53 +48,56 @@
 <pre><span id="VALdead_letter_exchange"><span class="keyword">val</span> dead_letter_exchange</span> : <code class="type">string -> string * <a href="Amqp_types.html#TYPEvalue">Amqp_types.value</a></code></pre>
 <pre><span id="VALdead_letter_routing_key"><span class="keyword">val</span> dead_letter_routing_key</span> : <code class="type">string -> string * <a href="Amqp_types.html#TYPEvalue">Amqp_types.value</a></code></pre>
 <pre><span id="VALmaximum_priority"><span class="keyword">val</span> maximum_priority</span> : <code class="type">int -> string * <a href="Amqp_types.html#TYPEvalue">Amqp_types.value</a></code></pre>
-<pre><span id="VALdeclare"><span class="keyword">val</span> declare</span> : <code class="type"><a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       ?durable:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       ?exclusive:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       ?auto_delete:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       ?arguments:<a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -><br>       <a href="Amqp_spec.html#TYPEqueue_name">Amqp_spec.queue_name</a> -> <a href="Amqp_queue.html#TYPEt">t</a> Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALdeclare"><span class="keyword">val</span> declare</span> : <code class="type">'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       ?durable:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       ?exclusive:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       ?auto_delete:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       ?arguments:<a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -> string -> <a href="Amqp_queue.html#TYPEt">t</a> Async.Std.Deferred.t</code></pre><div class="info ">
 Declare a queue<br>
 </div>
 
-<pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type">no_ack:<a href="Amqp_spec.html#TYPEno_ack">Amqp_spec.no_ack</a> -><br>       <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -><br>       (<a href="Amqp_spec.Basic.Get_ok.html#TYPEt">Amqp_spec.Basic.Get_ok.t</a> -><br>        <a href="Amqp_spec.Basic.Content.html#TYPEt">Amqp_spec.Basic.Content.t</a> -> string -> unit Async.Std.Deferred.t) -><br>       unit Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALget"><span class="keyword">val</span> get</span> : <code class="type">no_ack:bool -><br>       'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -> <a href="Amqp_message.html#TYPEt">Amqp_message.t</a> option Async.Std.Deferred.t</code></pre><div class="info ">
 Get a single message from the queue.
     The function automatically handles ack.
 <p>
 
     If <code class="code">no_ack</code> is false (default), the message is requsted with expicit
-    ack, and the function will ack the message when the hander returns<br>
+    ack and the caller is responsible for ack'ing or rejecting the message.<br>
 </div>
 
-<pre><span id="VALpublish"><span class="keyword">val</span> publish</span> : <code class="type"><a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -><br>       ?content_type:string -><br>       ?content_encoding:string -><br>       ?correlation_id:string -><br>       ?message_id:string -><br>       ?mandatory:bool -><br>       ?reply_to:string -><br>       ?expiration:string -><br>       ?persistent:bool -><br>       ?app_id:string -><br>       ?headers:<a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -> string -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALpublish"><span class="keyword">val</span> publish</span> : <code class="type">'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -><br>       ?mandatory:bool -> <a href="Amqp_message.html#TYPEmessage">Amqp_message.message</a> -> 'a Async.Std.Deferred.t</code></pre><div class="info ">
 Publish a message directly to a queue<br>
 </div>
 
-<pre><span id="VALconsume"><span class="keyword">val</span> consume</span> : <code class="type">id:string -><br>       ?no_local:bool -><br>       ?no_ack:bool -><br>       ?exclusive:bool -><br>       <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -><br>       (<a href="Amqp_spec.Basic.Deliver.html#TYPEt">Amqp_spec.Basic.Deliver.t</a> -><br>        <a href="Amqp_spec.Basic.Content.html#TYPEt">Amqp_spec.Basic.Content.t</a> -> string -> unit Async.Std.Deferred.t) -><br>       <a href="Amqp_queue.html#TYPEconsumer">consumer</a> Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALconsume"><span class="keyword">val</span> consume</span> : <code class="type">id:string -><br>       ?no_local:bool -><br>       ?no_ack:bool -><br>       ?exclusive:bool -><br>       'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -><br>       ('a <a href="Amqp_queue.html#TYPEconsumer">consumer</a> * <a href="Amqp_message.html#TYPEt">Amqp_message.t</a> Async.Std.Pipe.Reader.t)<br>       Async.Std.Deferred.t</code></pre><div class="info ">
 Setup consumption of a queue.
-    The function handles ack when <code class="code">no_ack</code> is false.<br>
+    Remember to ack messages.
+<p>
+
+    All messages are processed concurrently.
+    To limit number of concurrent processes, set the prefetch threashold.<br>
 </div>
 
-<pre><span id="VALcancel"><span class="keyword">val</span> cancel</span> : <code class="type"><a href="Amqp_queue.html#TYPEconsumer">consumer</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALcancel"><span class="keyword">val</span> cancel</span> : <code class="type">'a <a href="Amqp_queue.html#TYPEconsumer">consumer</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
 Cancel consumption.<br>
 </div>
 
-<pre><span id="VALbind"><span class="keyword">val</span> bind</span> : <code class="type"><a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -><br>       routing_key:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       <a href="Amqp_exchange.html#TYPEt">Amqp_exchange.t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
-Bind a queue to an exhange<br>
+<pre><span id="VALbind"><span class="keyword">val</span> bind</span> : <code class="type">'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -> 'b <a href="Amqp_exchange.html#TYPEt">Amqp_exchange.t</a> -> 'b -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+Bind a queue to an exhange.
+    Messages posted on the exchange which match the routing key
+    (and optionally match the headers)
+    will be routed to the queue<br>
 </div>
 
-<pre><span id="VALunbind"><span class="keyword">val</span> unbind</span> : <code class="type"><a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -><br>       routing_key:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       <a href="Amqp_exchange.html#TYPEt">Amqp_exchange.t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALunbind"><span class="keyword">val</span> unbind</span> : <code class="type">'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">t</a> -> 'b <a href="Amqp_exchange.html#TYPEt">Amqp_exchange.t</a> -> 'b -> unit Async.Std.Deferred.t</code></pre><div class="info ">
 Remove a binding from an exhange to a queue<br>
 </div>
 
-<pre><span id="VALpurge"><span class="keyword">val</span> purge</span> : <code class="type"><a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -> <a href="Amqp_queue.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALpurge"><span class="keyword">val</span> purge</span> : <code class="type">'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -> <a href="Amqp_queue.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
 Purge all messages on a queue<br>
 </div>
 
-<pre><span id="VALdelete"><span class="keyword">val</span> delete</span> : <code class="type">?if_unused:bool -><br>       ?if_empty:bool -> <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -> <a href="Amqp_queue.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALdelete"><span class="keyword">val</span> delete</span> : <code class="type">?if_unused:bool -><br>       ?if_empty:bool -><br>       'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -> <a href="Amqp_queue.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
 Delete a queue<br>
 </div>
 
 <pre><span id="VALname"><span class="keyword">val</span> name</span> : <code class="type"><a href="Amqp_queue.html#TYPEt">t</a> -> string</code></pre><div class="info ">
 Name of the queue<br>
-</div>
-
-<pre><span id="VALfake"><span class="keyword">val</span> fake</span> : <code class="type">'a -> string -> <a href="Amqp_queue.html#TYPEt">t</a> Async.Std.Deferred.t</code></pre><div class="info ">
-Debuggin internal function<br>
 </div>
 </body></html>

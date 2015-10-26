@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_exchange</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_exchange</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_constants.html" title="Amqp_constants">Previous</a>
@@ -32,74 +34,61 @@
 <h1>Module <a href="type_Amqp_exchange.html">Amqp_exchange</a></h1>
 
 <pre><span class="keyword">module</span> Amqp_exchange: <code class="code">sig</code> <a href="Amqp_exchange.html">..</a> <code class="code">end</code></pre><div class="info module top">
-Predefined exchanges<br>
+Operations on exchanges<br>
 </div>
 <hr width="100%">
 
-<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'_</code> t</span> </pre>
 
 
-<pre><span id="VALdefault"><span class="keyword">val</span> default</span> : <code class="type"><a href="Amqp_exchange.html#TYPEt">t</a></code></pre><div class="info ">
-Predefined exchanges<br>
+<pre><span id="TYPEexchange_type"><span class="keyword">type</span> <code class="type">'_</code> exchange_type</span> </pre>
+
+
+<pre><span id="VALdirect_t"><span class="keyword">val</span> direct_t</span> : <code class="type">[ `Queue of string ] <a href="Amqp_exchange.html#TYPEexchange_type">exchange_type</a></code></pre>
+<pre><span id="VALfanout_t"><span class="keyword">val</span> fanout_t</span> : <code class="type">unit <a href="Amqp_exchange.html#TYPEexchange_type">exchange_type</a></code></pre>
+<pre><span id="VALtopic_t"><span class="keyword">val</span> topic_t</span> : <code class="type">[ `Topic of string ] <a href="Amqp_exchange.html#TYPEexchange_type">exchange_type</a></code></pre>
+<pre><span id="VALmatch_t"><span class="keyword">val</span> match_t</span> : <code class="type">[ `Headers of <a href="Amqp_types.html#TYPEheader">Amqp_types.header</a> list ] <a href="Amqp_exchange.html#TYPEexchange_type">exchange_type</a></code></pre>
+<pre><span id="VALdefault"><span class="keyword">val</span> default</span> : <code class="type">[ `Queue of string ] <a href="Amqp_exchange.html#TYPEt">t</a></code></pre><div class="info ">
+Predefined Default exchange<br>
 </div>
 
-<pre><span id="VALamq_direct"><span class="keyword">val</span> amq_direct</span> : <code class="type"><a href="Amqp_exchange.html#TYPEt">t</a></code></pre>
-<pre><span id="VALamq_fanout"><span class="keyword">val</span> amq_fanout</span> : <code class="type"><a href="Amqp_exchange.html#TYPEt">t</a></code></pre>
-<pre><span id="VALamq_topic"><span class="keyword">val</span> amq_topic</span> : <code class="type"><a href="Amqp_exchange.html#TYPEt">t</a></code></pre>
-<pre><span id="VALamq_header"><span class="keyword">val</span> amq_header</span> : <code class="type"><a href="Amqp_exchange.html#TYPEt">t</a></code></pre>
-<pre><code><span id="TYPEexchange_type"><span class="keyword">type</span> <code class="type"></code>exchange_type</span> = </code></pre><table class="typetable">
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexchange_type.Direct"><span class="constructor">Direct</span></span></code></td>
+<pre><span id="VALamq_direct"><span class="keyword">val</span> amq_direct</span> : <code class="type">[ `Queue of string ] <a href="Amqp_exchange.html#TYPEt">t</a></code></pre><div class="info ">
+Predefined Direct exchange<br>
+</div>
 
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexchange_type.Fanout"><span class="constructor">Fanout</span></span></code></td>
+<pre><span id="VALamq_fanout"><span class="keyword">val</span> amq_fanout</span> : <code class="type">unit <a href="Amqp_exchange.html#TYPEt">t</a></code></pre><div class="info ">
+Predefined Fanout exchange<br>
+</div>
 
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexchange_type.Topic"><span class="constructor">Topic</span></span></code></td>
+<pre><span id="VALamq_topic"><span class="keyword">val</span> amq_topic</span> : <code class="type">[ `Topic of string ] <a href="Amqp_exchange.html#TYPEt">t</a></code></pre><div class="info ">
+Predefined topic exchange<br>
+</div>
 
-</tr>
-<tr>
-<td align="left" valign="top" >
-<code><span class="keyword">|</span></code></td>
-<td align="left" valign="top" >
-<code><span id="TYPEELTexchange_type.Headers"><span class="constructor">Headers</span></span></code></td>
+<pre><span id="VALamq_match"><span class="keyword">val</span> amq_match</span> : <code class="type">[ `Headers of <a href="Amqp_types.html#TYPEheader">Amqp_types.header</a> list ] <a href="Amqp_exchange.html#TYPEt">t</a></code></pre><div class="info ">
+Predefined match (header) exchange<br>
+</div>
 
-</tr></table>
-
-
-
-<pre><span id="VALdeclare"><span class="keyword">val</span> declare</span> : <code class="type">?passive:bool -><br>       ?durable:bool -><br>       ?auto_delete:bool -><br>       ?internal:bool -><br>       <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       exchange_type:<a href="Amqp_exchange.html#TYPEexchange_type">exchange_type</a> -><br>       string -> <a href="Amqp_exchange.html#TYPEt">t</a> Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALdeclare"><span class="keyword">val</span> declare</span> : <code class="type">?passive:bool -><br>       ?durable:bool -><br>       ?auto_delete:bool -><br>       'b <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       'a <a href="Amqp_exchange.html#TYPEexchange_type">exchange_type</a> -><br>       string -> 'a <a href="Amqp_exchange.html#TYPEt">t</a> Async.Std.Deferred.t</code></pre><div class="info ">
 Declare a exchange<br>
 </div>
 
-<pre><span id="VALdelete"><span class="keyword">val</span> delete</span> : <code class="type">?if_unused:bool -><br>       <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -> <a href="Amqp_exchange.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALdelete"><span class="keyword">val</span> delete</span> : <code class="type">?if_unused:bool -><br>       'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -> 'b <a href="Amqp_exchange.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
 Delete exhange<br>
 </div>
 
-<pre><span id="VALbind"><span class="keyword">val</span> bind</span> : <code class="type"><a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_exchange.html#TYPEt">t</a> -><br>       routing_key:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       <a href="Amqp_exchange.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
-Bind exchange t to exchange using <code class="code">routing_key</code> so messages are routed from exhange to t<br>
+<pre><span id="VALbind"><span class="keyword">val</span> bind</span> : <code class="type">'b <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       destination:'c <a href="Amqp_exchange.html#TYPEt">t</a> -><br>       source:'a <a href="Amqp_exchange.html#TYPEt">t</a> -> 'a -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+Bind exchange t to exchange using <code class="code">routing_key</code> so messages are routed from exhange to <code class="code">t</code><br>
 </div>
 
-<pre><span id="VALunbind"><span class="keyword">val</span> unbind</span> : <code class="type"><a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_exchange.html#TYPEt">t</a> -><br>       routing_key:string -> <a href="Amqp_exchange.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALunbind"><span class="keyword">val</span> unbind</span> : <code class="type">'b <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       destination:'c <a href="Amqp_exchange.html#TYPEt">t</a> -><br>       source:'a <a href="Amqp_exchange.html#TYPEt">t</a> -> 'a -> unit Async.Std.Deferred.t</code></pre><div class="info ">
 Remove exchange to exchange binding<br>
 </div>
 
-<pre><span id="VALpublish"><span class="keyword">val</span> publish</span> : <code class="type"><a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_exchange.html#TYPEt">t</a> -><br>       ?content_type:string -><br>       ?content_encoding:string -><br>       ?correlation_id:string -><br>       ?message_id:string -><br>       ?mandatory:bool -><br>       ?reply_to:string -><br>       ?expiration:string -><br>       ?persistent:bool -><br>       ?app_id:string -><br>       ?headers:<a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -><br>       routing_key:string -> string -> unit Async.Std.Deferred.t</code></pre><div class="info ">
-Publish a message directly to an exchange<br>
+<pre><span id="VALpublish"><span class="keyword">val</span> publish</span> : <code class="type">'a <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       'b <a href="Amqp_exchange.html#TYPEt">t</a> -><br>       ?mandatory:bool -><br>       routing_key:string -> <a href="Amqp_message.html#TYPEmessage">Amqp_message.message</a> -> 'a Async.Std.Deferred.t</code></pre><div class="info ">
+Publish a message directly to an exchange.<br>
 </div>
 
-<pre><span id="VALname"><span class="keyword">val</span> name</span> : <code class="type"><a href="Amqp_exchange.html#TYPEt">t</a> -> string</code></pre><div class="info ">
+<pre><span id="VALname"><span class="keyword">val</span> name</span> : <code class="type">'a <a href="Amqp_exchange.html#TYPEt">t</a> -> string</code></pre><div class="info ">
 Name of the exchange<br>
 </div>
 </body></html>

@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_rpc.html" title="Amqp_rpc">Previous</a>
@@ -31,97 +33,120 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.html">Amqp_spec</a></h1>
 
-<pre><span class="keyword">module</span> Amqp_spec: <code class="code">sig</code> <a href="Amqp_spec.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Amqp_spec: <code class="code">sig</code> <a href="Amqp_spec.html">..</a> <code class="code">end</code></pre><div class="info module top">
+Internal - Low level protocol description<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALreply_text"><span class="keyword">val</span> reply_text</span> : <code class="type">string <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALpath"><span class="keyword">val</span> path</span> : <code class="type">string <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALreply_code"><span class="keyword">val</span> reply_code</span> : <code class="type">int <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALclass_id"><span class="keyword">val</span> class_id</span> : <code class="type">int <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALmessage_count"><span class="keyword">val</span> message_count</span> : <code class="type">int <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALpeer_properties"><span class="keyword">val</span> peer_properties</span> : <code class="type"><a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALmethod_id"><span class="keyword">val</span> method_id</span> : <code class="type">int <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALexchange_name"><span class="keyword">val</span> exchange_name</span> : <code class="type">string <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALno_wait"><span class="keyword">val</span> no_wait</span> : <code class="type">bool <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALdelivery_tag"><span class="keyword">val</span> delivery_tag</span> : <code class="type">int <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALno_ack"><span class="keyword">val</span> no_ack</span> : <code class="type">bool <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALconsumer_tag"><span class="keyword">val</span> consumer_tag</span> : <code class="type">string <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALqueue_name"><span class="keyword">val</span> queue_name</span> : <code class="type">string <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALredelivered"><span class="keyword">val</span> redelivered</span> : <code class="type">bool <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
-<pre><span id="VALno_local"><span class="keyword">val</span> no_local</span> : <code class="type">bool <a href="Amqp_types.html#TYPEelem">Amqp_types.elem</a></code></pre>
 <pre><span id="TYPEreply_text"><span class="keyword">type</span> <code class="type"></code>reply_text</span> = <code class="type"><a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a></code> </pre>
+<div class="info ">
+The localised reply text. This text can be logged as an aid to resolving issues.<br>
+</div>
 
 
 <pre><span id="TYPEpath"><span class="keyword">type</span> <code class="type"></code>path</span> = <code class="type"><a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a></code> </pre>
+<div class="info ">
+Unconstrained.<br>
+</div>
 
 
 <pre><span id="TYPEreply_code"><span class="keyword">type</span> <code class="type"></code>reply_code</span> = <code class="type"><a href="Amqp_types.html#TYPEshort">Amqp_types.short</a></code> </pre>
+<div class="info ">
+The reply code. The AMQ reply codes are defined as constants at the start of this formal specification.<br>
+</div>
 
 
 <pre><span id="TYPEclass_id"><span class="keyword">type</span> <code class="type"></code>class_id</span> = <code class="type"><a href="Amqp_types.html#TYPEshort">Amqp_types.short</a></code> </pre>
 
 
 <pre><span id="TYPEmessage_count"><span class="keyword">type</span> <code class="type"></code>message_count</span> = <code class="type"><a href="Amqp_types.html#TYPElong">Amqp_types.long</a></code> </pre>
+<div class="info ">
+The number of messages in the queue, which will be zero for newly-declared queues. This is the number of messages present in the queue, and committed if the channel on which they were published is transacted, that are not waiting acknowledgement.<br>
+</div>
 
 
 <pre><span id="TYPEpeer_properties"><span class="keyword">type</span> <code class="type"></code>peer_properties</span> = <code class="type"><a href="Amqp_types.html#TYPEtable">Amqp_types.table</a></code> </pre>
+<div class="info ">
+This table provides a set of peer properties, used for identification, debugging, and general information.<br>
+</div>
 
 
 <pre><span id="TYPEmethod_id"><span class="keyword">type</span> <code class="type"></code>method_id</span> = <code class="type"><a href="Amqp_types.html#TYPEshort">Amqp_types.short</a></code> </pre>
 
 
 <pre><span id="TYPEexchange_name"><span class="keyword">type</span> <code class="type"></code>exchange_name</span> = <code class="type"><a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a></code> </pre>
+<div class="info ">
+The exchange name is a client-selected string that identifies the exchange for publish methods.<br>
+</div>
 
 
 <pre><span id="TYPEno_wait"><span class="keyword">type</span> <code class="type"></code>no_wait</span> = <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code> </pre>
+<div class="info ">
+If set, the server will not respond to the method. The client should not wait for a reply method. If the server could not complete the method it will raise a channel or connection exception.<br>
+</div>
 
 
 <pre><span id="TYPEdelivery_tag"><span class="keyword">type</span> <code class="type"></code>delivery_tag</span> = <code class="type"><a href="Amqp_types.html#TYPElonglong">Amqp_types.longlong</a></code> </pre>
+<div class="info ">
+The server-assigned and channel-specific delivery tag<br>
+</div>
 
 
 <pre><span id="TYPEno_ack"><span class="keyword">type</span> <code class="type"></code>no_ack</span> = <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code> </pre>
+<div class="info ">
+If this field is set the server does not expect acknowledgements for messages. That is, when a message is delivered to the client the server assumes the delivery will succeed and immediately dequeues it. This functionality may increase performance but at the cost of reliability. Messages can get lost if a client dies before they are delivered to the application.<br>
+</div>
 
 
 <pre><span id="TYPEconsumer_tag"><span class="keyword">type</span> <code class="type"></code>consumer_tag</span> = <code class="type"><a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a></code> </pre>
+<div class="info ">
+Identifier for the consumer, valid within the current channel.<br>
+</div>
 
 
 <pre><span id="TYPEqueue_name"><span class="keyword">type</span> <code class="type"></code>queue_name</span> = <code class="type"><a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a></code> </pre>
+<div class="info ">
+The queue name identifies the queue within the vhost. In methods where the queue name may be blank, and that has no specific significance, this refers to the 'current' queue for the channel, meaning the last queue that the client declared on the channel. If the client did not declare a queue, and the method needs a queue name, this will result in a 502 (syntax error) channel exception.<br>
+</div>
 
 
 <pre><span id="TYPEredelivered"><span class="keyword">type</span> <code class="type"></code>redelivered</span> = <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code> </pre>
+<div class="info ">
+This indicates that the message has been previously delivered to this or another client.<br>
+</div>
 
 
 <pre><span id="TYPEno_local"><span class="keyword">type</span> <code class="type"></code>no_local</span> = <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code> </pre>
+<div class="info ">
+If the no-local field is set the server will not send messages to the connection that published them.<br>
+</div>
 
 
-<pre><span id="VALinternal_error"><span class="keyword">val</span> internal_error</span> : <code class="type">int</code></pre>
-<pre><span id="VALnot_implemented"><span class="keyword">val</span> not_implemented</span> : <code class="type">int</code></pre>
-<pre><span id="VALnot_allowed"><span class="keyword">val</span> not_allowed</span> : <code class="type">int</code></pre>
-<pre><span id="VALresource_error"><span class="keyword">val</span> resource_error</span> : <code class="type">int</code></pre>
-<pre><span id="VALunexpected_frame"><span class="keyword">val</span> unexpected_frame</span> : <code class="type">int</code></pre>
-<pre><span id="VALchannel_error"><span class="keyword">val</span> channel_error</span> : <code class="type">int</code></pre>
-<pre><span id="VALcommand_invalid"><span class="keyword">val</span> command_invalid</span> : <code class="type">int</code></pre>
-<pre><span id="VALsyntax_error"><span class="keyword">val</span> syntax_error</span> : <code class="type">int</code></pre>
-<pre><span id="VALframe_error"><span class="keyword">val</span> frame_error</span> : <code class="type">int</code></pre>
-<pre><span id="VALprecondition_failed"><span class="keyword">val</span> precondition_failed</span> : <code class="type">int</code></pre>
-<pre><span id="VALresource_locked"><span class="keyword">val</span> resource_locked</span> : <code class="type">int</code></pre>
-<pre><span id="VALnot_found"><span class="keyword">val</span> not_found</span> : <code class="type">int</code></pre>
-<pre><span id="VALaccess_refused"><span class="keyword">val</span> access_refused</span> : <code class="type">int</code></pre>
-<pre><span id="VALinvalid_path"><span class="keyword">val</span> invalid_path</span> : <code class="type">int</code></pre>
-<pre><span id="VALconnection_forced"><span class="keyword">val</span> connection_forced</span> : <code class="type">int</code></pre>
-<pre><span id="VALno_consumers"><span class="keyword">val</span> no_consumers</span> : <code class="type">int</code></pre>
-<pre><span id="VALcontent_too_large"><span class="keyword">val</span> content_too_large</span> : <code class="type">int</code></pre>
-<pre><span id="VALreply_success"><span class="keyword">val</span> reply_success</span> : <code class="type">int</code></pre>
-<pre><span id="VALframe_end"><span class="keyword">val</span> frame_end</span> : <code class="type">int</code></pre>
-<pre><span id="VALframe_min_size"><span class="keyword">val</span> frame_min_size</span> : <code class="type">int</code></pre>
-<pre><span id="VALframe_heartbeat"><span class="keyword">val</span> frame_heartbeat</span> : <code class="type">int</code></pre>
-<pre><span id="VALframe_body"><span class="keyword">val</span> frame_body</span> : <code class="type">int</code></pre>
-<pre><span id="VALframe_header"><span class="keyword">val</span> frame_header</span> : <code class="type">int</code></pre>
-<pre><span id="VALframe_method"><span class="keyword">val</span> frame_method</span> : <code class="type">int</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Confirm.html">Confirm</a>: <code class="code">sig</code> <a href="Amqp_spec.Confirm.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.html">Tx</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.html">Basic</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Queue.html">Queue</a>: <code class="code">sig</code> <a href="Amqp_spec.Queue.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.html">Exchange</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.html">Channel</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.html">Connection</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.html">..</a> <code class="code">end</code></pre>
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Printer.html">Printer</a>: <code class="code">sig</code> <a href="Amqp_spec.Printer.html">..</a> <code class="code">end</code></pre></body></html>
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Confirm.html">Confirm</a>: <code class="code">sig</code> <a href="Amqp_spec.Confirm.html">..</a> <code class="code">end</code></pre><div class="info">
+The Confirm class allows publishers to put the channel in confirm mode and susequently be notified when messages have been handled by the broker.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Tx.html">Tx</a>: <code class="code">sig</code> <a href="Amqp_spec.Tx.html">..</a> <code class="code">end</code></pre><div class="info">
+The Tx class allows publish and ack operations to be batched into atomic units of work.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Basic.html">Basic</a>: <code class="code">sig</code> <a href="Amqp_spec.Basic.html">..</a> <code class="code">end</code></pre><div class="info">
+The Basic class provides methods that support an industry-standard messaging model.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Queue.html">Queue</a>: <code class="code">sig</code> <a href="Amqp_spec.Queue.html">..</a> <code class="code">end</code></pre><div class="info">
+Queues store and forward messages.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.html">Exchange</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.html">..</a> <code class="code">end</code></pre><div class="info">
+Exchanges match and distribute messages across queues.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Channel.html">Channel</a>: <code class="code">sig</code> <a href="Amqp_spec.Channel.html">..</a> <code class="code">end</code></pre><div class="info">
+The channel class provides methods for a client to establish a channel to a server and for both peers to operate the channel thereafter.
+</div>
+
+<pre><span class="keyword">module</span> <a href="Amqp_spec.Connection.html">Connection</a>: <code class="code">sig</code> <a href="Amqp_spec.Connection.html">..</a> <code class="code">end</code></pre><div class="info">
+The connection class provides methods for a client to establish a network connection to a server, and for both peers to operate the connection thereafter.
+</div>
+</body></html>

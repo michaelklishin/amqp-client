@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Queue.Purge_ok</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Queue.Purge_ok</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Queue.Unbind.html" title="Amqp_spec.Queue.Unbind">Previous</a>
@@ -31,20 +33,24 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Queue.Purge_ok.html">Amqp_spec.Queue.Purge_ok</a></h1>
 
-<pre><span class="keyword">module</span> Purge_ok: <code class="code">sig</code> <a href="Amqp_spec.Queue.Purge_ok.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Purge_ok: <code class="code">sig</code> <a href="Amqp_spec.Queue.Purge_ok.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method confirms the purge of a queue.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(int -> 'a, 'a) <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.message_count">message_count</span>&nbsp;: <code class="type"><a href="Amqp_spec.html#TYPEmessage_count">Amqp_spec.message_count</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Reports the number of messages purged.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 }
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Queue.Purge_ok.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Queue.Purge_ok.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">message_count:<a href="Amqp_spec.html#TYPEmessage_count">Amqp_spec.message_count</a> -> unit -> <a href="Amqp_spec.Queue.Purge_ok.html#TYPEt">t</a></code></pre></body></html>

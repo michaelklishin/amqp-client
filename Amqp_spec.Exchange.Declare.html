@@ -17,12 +17,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_spec.Exchange.Declare</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_spec.Exchange.Declare</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_spec.Exchange.Declare_ok.html" title="Amqp_spec.Exchange.Declare_ok">Previous</a>
@@ -31,9 +33,11 @@
 </div>
 <h1>Module <a href="type_Amqp_spec.Exchange.Declare.html">Amqp_spec.Exchange.Declare</a></h1>
 
-<pre><span class="keyword">module</span> Declare: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Declare.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Declare: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Declare.html">..</a> <code class="code">end</code></pre><div class="info module top">
+This method creates an exchange if it does not already exist, and if the exchange exists, verifies that it is of the correct and expected class.<br>
+</div>
+<hr width="100%">
 
-<pre><span id="VALspec"><span class="keyword">val</span> spec</span> : <code class="type">(int -><br>        string -><br>        string -> bool -> bool -> bool -> bool -> bool -> <a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -> 'a,<br>        'a)<br>       <a href="Amqp_types.Spec.html#TYPEspec">Amqp_types.Spec.spec</a></code></pre>
 <pre><code><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> = {</code></pre><table class="typetable">
 <tr>
 <td align="left" valign="top" >
@@ -47,35 +51,50 @@
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.amqp_type">amqp_type</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+Each exchange belongs to one of a set of exchange types implemented by the server. The exchange types define the functionality of the exchange - i.e. how messages are routed through it. It is not valid or meaningful to attempt to change the type of an existing exchange.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.passive">passive</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+If set, the server will reply with Declare-Ok if the exchange already exists with the same name, and raise an error if not. The client can use this to check whether an exchange exists without modifying the server state. When set, all other method fields except name and no-wait are ignored. A declare with both passive and no-wait has no effect. Arguments are compared for semantic equivalence.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.durable">durable</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+If set when creating a new exchange, the exchange will be marked as durable. Durable exchanges remain active when a server restarts. Non-durable exchanges (transient exchanges) are purged if/when a server restarts.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.auto_delete">auto_delete</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+If set, the exchange is deleted when all queues have finished using it.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.internal">internal</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+If set, the exchange may not be used directly by publishers, but only when bound to other exchanges. Internal exchanges are used to construct wiring that is not visible to applications.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr>
 <tr>
 <td align="left" valign="top" >
@@ -89,12 +108,14 @@
 <code>&nbsp;&nbsp;</code></td>
 <td align="left" valign="top" >
 <code><span id="TYPEELTt.arguments">arguments</span>&nbsp;: <code class="type"><a href="Amqp_types.html#TYPEtable">Amqp_types.table</a></code>;</code></td>
-
+<td class="typefieldcomment" align="left" valign="top" ><code>(*</code></td><td class="typefieldcomment" align="left" valign="top" ><div class="info ">
+A set of arguments for the declaration. The syntax and semantics of these arguments depends on the server implementation.<br>
+</div>
+</td><td class="typefieldcomment" align="left" valign="bottom" ><code>*)</code></td>
 </tr></table>
 }
 
 
 
-<pre><span class="keyword">module</span> <a href="Amqp_spec.Exchange.Declare.I.html">I</a>: <code class="code">sig</code> <a href="Amqp_spec.Exchange.Declare.I.html">..</a> <code class="code">end</code></pre>
 <pre><span id="VALinit"><span class="keyword">val</span> init</span> : <code class="type">exchange:'a -><br>       amqp_type:<a href="Amqp_spec.html#TYPEexchange_name">Amqp_spec.exchange_name</a> -><br>       passive:<a href="Amqp_types.html#TYPEshortstr">Amqp_types.shortstr</a> -><br>       durable:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       auto_delete:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       internal:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       no_wait:<a href="Amqp_types.html#TYPEbit">Amqp_types.bit</a> -><br>       arguments:<a href="Amqp_spec.html#TYPEno_wait">Amqp_spec.no_wait</a> -><br>       unit -> <a href="Amqp_types.html#TYPEtable">Amqp_types.table</a> -> <a href="Amqp_spec.Exchange.Declare.html#TYPEt">t</a></code></pre>
-<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type">?post_handler:(unit -> unit) -><br>       <a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Exchange.Declare.html#TYPEt">t</a> -> unit Async_kernel.Deferred0.t</code></pre></body></html>
+<pre><span id="VALrequest"><span class="keyword">val</span> request</span> : <code class="type"><a href="Amqp_framing.html#TYPEt">Amqp_framing.t</a> * <a href="Amqp_framing.html#TYPEchannel_no">Amqp_framing.channel_no</a> -><br>       <a href="Amqp_spec.Exchange.Declare.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre></body></html>

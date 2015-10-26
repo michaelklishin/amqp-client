@@ -16,12 +16,14 @@
 <link title="Amqp_constants" rel="Chapter" href="Amqp_constants.html">
 <link title="Amqp_exchange" rel="Chapter" href="Amqp_exchange.html">
 <link title="Amqp_framing" rel="Chapter" href="Amqp_framing.html">
+<link title="Amqp_io" rel="Chapter" href="Amqp_io.html">
+<link title="Amqp_message" rel="Chapter" href="Amqp_message.html">
 <link title="Amqp_protocol" rel="Chapter" href="Amqp_protocol.html">
+<link title="Amqp_protocol_helpers" rel="Chapter" href="Amqp_protocol_helpers.html">
 <link title="Amqp_queue" rel="Chapter" href="Amqp_queue.html">
 <link title="Amqp_rpc" rel="Chapter" href="Amqp_rpc.html">
 <link title="Amqp_spec" rel="Chapter" href="Amqp_spec.html">
-<link title="Amqp_types" rel="Chapter" href="Amqp_types.html">
-<link title="Amqp_util" rel="Chapter" href="Amqp_util.html"><title>Amqp_rpc.Server</title>
+<link title="Amqp_types" rel="Chapter" href="Amqp_types.html"><title>Amqp_rpc.Server</title>
 </head>
 <body>
 <div class="navbar"><a class="pre" href="Amqp_rpc.Client.html" title="Amqp_rpc.Client">Previous</a>
@@ -29,17 +31,34 @@
 &nbsp;</div>
 <h1>Module <a href="type_Amqp_rpc.Server.html">Amqp_rpc.Server</a></h1>
 
-<pre><span class="keyword">module</span> Server: <code class="code">sig</code> <a href="Amqp_rpc.Server.html">..</a> <code class="code">end</code></pre><hr width="100%">
+<pre><span class="keyword">module</span> Server: <code class="code">sig</code> <a href="Amqp_rpc.Server.html">..</a> <code class="code">end</code></pre><div class="info module top">
+Rpc Server pattern<br>
+</div>
+<hr width="100%">
 
-<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type"></code>t</span> </pre>
+<pre><span id="TYPEt"><span class="keyword">type</span> <code class="type">'a</code> t</span> </pre>
 
 
-<pre><span id="VALstart"><span class="keyword">val</span> start</span> : <code class="type"><a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">Amqp_queue.t</a> -><br>       (string -> string Async.Std.Deferred.t) -><br>       <a href="Amqp_rpc.Server.html#TYPEt">t</a> Async.Std.Deferred.t</code></pre><div class="info ">
+<pre><span id="VALqueue_argument"><span class="keyword">val</span> queue_argument</span> : <code class="type"><a href="Amqp_types.html#TYPEheader">Amqp_types.header</a></code></pre><div class="info ">
+Recommended arguement to add when declaring the rpc server queue.
+        This will set the dead letter exhange to the header exchange to help
+        clients to be notified if a request has timed out<br>
+</div>
+
+<pre><span id="VALstart"><span class="keyword">val</span> start</span> : <code class="type">?async:bool -><br>       ([< `Failed | `Ok ] as 'a) <a href="Amqp_channel.html#TYPEt">Amqp_channel.t</a> -><br>       <a href="Amqp_queue.html#TYPEt">Amqp_queue.t</a> -><br>       (<a href="Amqp_message.html#TYPEmessage">Amqp_message.message</a> -> <a href="Amqp_message.html#TYPEmessage">Amqp_message.message</a> Async.Std.Deferred.t) -><br>       'a <a href="Amqp_rpc.Server.html#TYPEt">t</a> Async.Std.Deferred.t</code></pre><div class="info ">
 Start an rpc server procucing replies for requests comming in
         on the given queue.<br>
 </div>
+<div class="param_info"><code class="code">async</code> : If true muliple request can be handled concurrently.
+                     If false message are handled synchroniously (default)
+<p>
 
-<pre><span id="VALstop"><span class="keyword">val</span> stop</span> : <code class="type"><a href="Amqp_rpc.Server.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
+        It is recommended to create the queue with the header_exchange
+        as dead letter exhange.  This will allow messages to be routed
+        back the the sender at timeout. E.g:
+        <code class="code"> Queue.declare ~arguments:[Rpc.queue_argument] "rpcservice" </code></div>
+
+<pre><span id="VALstop"><span class="keyword">val</span> stop</span> : <code class="type">'a <a href="Amqp_rpc.Server.html#TYPEt">t</a> -> unit Async.Std.Deferred.t</code></pre><div class="info ">
 Stop the server<br>
 </div>
 </body></html>
